@@ -2,33 +2,35 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DoorControl : MonoBehaviour {
+public class DoorsControl : MonoBehaviour {
 
-    public static DoorControl Instance;
+    public static DoorsControl Instance;
 
     public Animator[] doorAnimators;
 
     private void Awake()
     {
-        if(Instance == null)
+        if (Instance == null)
         {
             Instance = this;
         }
     }
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
 
     }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
 
     public void OpenDoor(int index)
     {
-        if(!doorAnimators[index].GetCurrentAnimatorStateInfo(0).IsName("open") || !doorAnimators[index].GetCurrentAnimatorStateInfo(0).IsName("close"))
+        if (!doorAnimators[index].GetCurrentAnimatorStateInfo(0).IsName("open") || !doorAnimators[index].GetCurrentAnimatorStateInfo(0).IsName("close"))
         {
             doorAnimators[index].SetTrigger("open");
         }
