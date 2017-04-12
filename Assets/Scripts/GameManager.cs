@@ -62,8 +62,8 @@ public class GameManager : MonoBehaviour {
             if (uMyGUI_PopupManager.Instance.IsPopupShown)
             {
                 uMyGUI_PopupManager.Instance.HideAllPopup();
-                GameManager.Instance.FreezPlayer(false);
-                GameManager.Instance.Unpause();
+                FreezPlayer(false);
+                Unpause();
             }
 
             //pause game
@@ -86,6 +86,9 @@ public class GameManager : MonoBehaviour {
     public void ResetGame()
     {
         ext = new Excavator[2];
+        ext[0] = new Excavator();
+        ext[1] = new Excavator();
+
         gun = new Weapon();
 
         Copper = 0;
@@ -118,6 +121,16 @@ public class GameManager : MonoBehaviour {
         ext[index].CopperPerMin = copper;
         ext[index].SilverPerMin = silver;
         ext[index].GoldPerMin = gold;
+        StartCoroutine(ExcavatorProcess(index));
+    }
+    IEnumerator ExcavatorProcess(int index)
+    {
+        yield return new WaitForSeconds(5);
+        ExcavatorControl.Instance.ExcavatorOff(index);
+        Excavator e = ext[index];
+        e.CopperPool += e.CopperPerMin;
+        e.SilverPool += e.SilverPerMin;
+        e.GoldPool += e.GoldPerMin;
     }
     public void StopExcavator(int index)
     {

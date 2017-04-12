@@ -54,10 +54,25 @@ public class PlayerRaycast : MonoBehaviour {
                     GameManager.Instance.Pause();
                     ((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("excavator")).SetText("Excavator01", "").ShowButton("start", () =>
                     {
-                        Debug.Log("Start!!");
-                        ExcavatorControl.Instance.ExcavatorOn(0);
-                        GameManager.Instance.FreezPlayer(false);
-                        GameManager.Instance.Unpause();
+                        ((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("resources")).SetText("Resources", "").ShowButton("copper", () =>
+                        {
+                            GameManager.Instance.StartExcavator(0, 100, 0, 0);
+                            ExcavatorControl.Instance.ExcavatorOn(0);
+                            GameManager.Instance.FreezPlayer(false);
+                            GameManager.Instance.Unpause();
+                        }).ShowButton("silver", () =>
+                        {
+                            GameManager.Instance.StartExcavator(0, 0, 60, 0);
+                            ExcavatorControl.Instance.ExcavatorOn(0);
+                            GameManager.Instance.FreezPlayer(false);
+                            GameManager.Instance.Unpause();
+                        }).ShowButton("gold", () =>
+                        {
+                            GameManager.Instance.StartExcavator(0, 0, 0, 10);
+                            ExcavatorControl.Instance.ExcavatorOn(0);
+                            GameManager.Instance.FreezPlayer(false);
+                            GameManager.Instance.Unpause();
+                        });
                     }).ShowButton("upgrade", () =>
                     {
                         Debug.Log("Upgrade!!");
@@ -81,10 +96,25 @@ public class PlayerRaycast : MonoBehaviour {
                     GameManager.Instance.Pause();
                     ((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("excavator")).SetText("Excavator02", "").ShowButton("start", () =>
                     {
-                        Debug.Log("Start!!");
-                        ExcavatorControl.Instance.ExcavatorOn(1);
-                        GameManager.Instance.FreezPlayer(false);
-                        GameManager.Instance.Unpause();
+                        ((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("resources")).SetText("Resources", "").ShowButton("copper", () =>
+                        {
+                            GameManager.Instance.StartExcavator(1, 100, 0, 0);
+                            ExcavatorControl.Instance.ExcavatorOn(1);
+                            GameManager.Instance.FreezPlayer(false);
+                            GameManager.Instance.Unpause();
+                        }).ShowButton("silver", () =>
+                        {
+                            GameManager.Instance.StartExcavator(1, 0, 60, 0);
+                            ExcavatorControl.Instance.ExcavatorOn(1);
+                            GameManager.Instance.FreezPlayer(false);
+                            GameManager.Instance.Unpause();
+                        }).ShowButton("gold", () =>
+                        {
+                            GameManager.Instance.StartExcavator(1, 0, 0, 10);
+                            ExcavatorControl.Instance.ExcavatorOn(1);
+                            GameManager.Instance.FreezPlayer(false);
+                            GameManager.Instance.Unpause();
+                        });
                     }).ShowButton("upgrade", () =>
                     {
                         Debug.Log("Upgrade!!");
