@@ -1,21 +1,40 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using uMyGUI;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityStandardAssets.Characters.FirstPerson;
 
+[Serializable]
 public class Excavator
 {
     public int level = 1;
+    public int time = 60;
+    public int tick = 0;
+    public bool startedFlag = false;
+    public bool finishedFlag = false;
+
     public int CopperPerMin = 0;
     public int SilverPerMin = 0;
     public int GoldPerMin = 0;
+    
+    public Slider progressWheel;
 
-    public int CopperPool = 0;
-    public int SilverPool = 0;
-    public int GoldPool = 0;
+    public void reset()
+    {
+        level = 1;
+        time = 60;
+        tick = 0;
+        startedFlag = false;
+        finishedFlag = false;
+
+        CopperPerMin = 0;
+        SilverPerMin = 0;
+        GoldPerMin = 0;
+    }
 }
-
+[Serializable]
 public class Weapon
 {
     public int Damage;
@@ -36,8 +55,8 @@ public class GameManager : MonoBehaviour {
     public GameObject HUDCanvas;
 
     // resources
-    Excavator[] ext;
-    Weapon gun;
+    public Excavator[] ext;
+    public Weapon gun;
     public int Copper = 0;
     public int Silver = 0;
     public int Gold = 0;
@@ -85,9 +104,8 @@ public class GameManager : MonoBehaviour {
     }
     public void ResetGame()
     {
-        ext = new Excavator[2];
-        ext[0] = new Excavator();
-        ext[1] = new Excavator();
+        ext[0].reset();
+        ext[1].reset();
 
         gun = new Weapon();
 
@@ -121,16 +139,26 @@ public class GameManager : MonoBehaviour {
         ext[index].CopperPerMin = copper;
         ext[index].SilverPerMin = silver;
         ext[index].GoldPerMin = gold;
+        ext[index].startedFlag = true;
+        StartCoroutine(ExcavatorProcess(index));
+    }
+    public void RestartExcavator(int index)
+    {
         StartCoroutine(ExcavatorProcess(index));
     }
     IEnumerator ExcavatorProcess(int index)
     {
-        yield return new WaitForSeconds(5);
-        ExcavatorControl.Instance.ExcavatorOff(index);
         Excavator e = ext[index];
-        e.CopperPool += e.CopperPerMin;
-        e.SilverPool += e.SilverPerMin;
-        e.GoldPool += e.GoldPerMin;
+        while(e.tick * 0.1f < e.time)
+        {
+            yield return new WaitForSeconds(0.1f);
+            e.tick++;
+            e.progressWheel.value = (e.tick * e.progressWheel.maxValue * 0.1f) / e.time;
+        }
+        e.tick = 0;
+        ExcavatorControl.Instance.ExcavatorOff(index);
+        e.finishedFlag = true;
+        NotificationText.Instance.AddNotification("Excavator0" + index + " finish process.");
     }
     public void StopExcavator(int index)
     {

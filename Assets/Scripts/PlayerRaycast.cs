@@ -49,41 +49,67 @@ public class PlayerRaycast : MonoBehaviour {
                 HandPanel.SetActive(true);
                 if (Input.GetKeyDown(KeyCode.E))
                 {
-
-                    GameManager.Instance.FreezPlayer(true);
-                    GameManager.Instance.Pause();
-                    ((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("excavator")).SetText("Excavator01", "").ShowButton("start", () =>
+                    if (!GameManager.Instance.ext[0].startedFlag)
                     {
-                        ((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("resources")).SetText("Resources", "").ShowButton("copper", () =>
+                        GameManager.Instance.FreezPlayer(true);
+                        GameManager.Instance.Pause();
+                        ((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("excavator")).SetText("Excavator01", "").ShowButton("start", () =>
                         {
-                            GameManager.Instance.StartExcavator(0, 100, 0, 0);
-                            ExcavatorControl.Instance.ExcavatorOn(0);
+                            ((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("resources")).SetText("Resources", "").ShowButton("copper", () =>
+                            {
+                                GameManager.Instance.StartExcavator(0, 100, 0, 0);
+                                ExcavatorControl.Instance.ExcavatorOn(0);
+                                GameManager.Instance.FreezPlayer(false);
+                                GameManager.Instance.Unpause();
+                            }).ShowButton("silver", () =>
+                            {
+                                GameManager.Instance.StartExcavator(0, 0, 60, 0);
+                                ExcavatorControl.Instance.ExcavatorOn(0);
+                                GameManager.Instance.FreezPlayer(false);
+                                GameManager.Instance.Unpause();
+                            }).ShowButton("gold", () =>
+                            {
+                                GameManager.Instance.StartExcavator(0, 0, 0, 10);
+                                ExcavatorControl.Instance.ExcavatorOn(0);
+                                GameManager.Instance.FreezPlayer(false);
+                                GameManager.Instance.Unpause();
+                            });
+                        }).ShowButton("upgrade", () =>
+                        {
+                            Debug.Log("Upgrade!!");
+
                             GameManager.Instance.FreezPlayer(false);
                             GameManager.Instance.Unpause();
-                        }).ShowButton("silver", () =>
+                        }).ShowButton("close", () =>
                         {
-                            GameManager.Instance.StartExcavator(0, 0, 60, 0);
-                            ExcavatorControl.Instance.ExcavatorOn(0);
-                            GameManager.Instance.FreezPlayer(false);
-                            GameManager.Instance.Unpause();
-                        }).ShowButton("gold", () =>
-                        {
-                            GameManager.Instance.StartExcavator(0, 0, 0, 10);
-                            ExcavatorControl.Instance.ExcavatorOn(0);
                             GameManager.Instance.FreezPlayer(false);
                             GameManager.Instance.Unpause();
                         });
-                    }).ShowButton("upgrade", () =>
+                    }
+                    else
                     {
-                        Debug.Log("Upgrade!!");
-
-                        GameManager.Instance.FreezPlayer(false);
-                        GameManager.Instance.Unpause();
-                    }).ShowButton("close", () =>
-                 {
-                        GameManager.Instance.FreezPlayer(false);
-                        GameManager.Instance.Unpause();
-                    });
+                        if (GameManager.Instance.ext[0].finishedFlag)
+                        {
+                            Excavator e = GameManager.Instance.ext[0];
+                            e.finishedFlag = false;
+                            GameManager.Instance.AddCopper(e.CopperPerMin);
+                            GameManager.Instance.AddSilver(e.SilverPerMin);
+                            GameManager.Instance.AddGold(e.GoldPerMin);
+                            GameManager.Instance.RestartExcavator(0);
+                            if (e.CopperPerMin > 0)
+                            {
+                                NotificationText.Instance.AddNotification("Copper + " + e.CopperPerMin);
+                            }
+                            if(e.SilverPerMin > 0)
+                            {
+                                NotificationText.Instance.AddNotification("Silver + " + e.SilverPerMin);
+                            }
+                            if(e.GoldPerMin > 0)
+                            {
+                                NotificationText.Instance.AddNotification("Gold + " + e.GoldPerMin);
+                            }
+                        }
+                    }
                 }
             }
             else if (name.StartsWith("excavator2"))
@@ -91,41 +117,68 @@ public class PlayerRaycast : MonoBehaviour {
                 HandPanel.SetActive(true);
                 if (Input.GetKeyDown(KeyCode.E))
                 {
-
-                    GameManager.Instance.FreezPlayer(true);
-                    GameManager.Instance.Pause();
-                    ((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("excavator")).SetText("Excavator02", "").ShowButton("start", () =>
+                    if (!GameManager.Instance.ext[1].startedFlag)
                     {
-                        ((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("resources")).SetText("Resources", "").ShowButton("copper", () =>
+                        GameManager.Instance.FreezPlayer(true);
+                        GameManager.Instance.Pause();
+                        ((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("excavator")).SetText("Excavator02", "").ShowButton("start", () =>
                         {
-                            GameManager.Instance.StartExcavator(1, 100, 0, 0);
-                            ExcavatorControl.Instance.ExcavatorOn(1);
+                            ((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("resources")).SetText("Resources", "").ShowButton("copper", () =>
+                            {
+                                GameManager.Instance.StartExcavator(1, 100, 0, 0);
+                                ExcavatorControl.Instance.ExcavatorOn(1);
+                                GameManager.Instance.FreezPlayer(false);
+                                GameManager.Instance.Unpause();
+                            }).ShowButton("silver", () =>
+                            {
+                                GameManager.Instance.StartExcavator(1, 0, 60, 0);
+                                ExcavatorControl.Instance.ExcavatorOn(1);
+                                GameManager.Instance.FreezPlayer(false);
+                                GameManager.Instance.Unpause();
+                            }).ShowButton("gold", () =>
+                            {
+                                GameManager.Instance.StartExcavator(1, 0, 0, 10);
+                                ExcavatorControl.Instance.ExcavatorOn(1);
+                                GameManager.Instance.FreezPlayer(false);
+                                GameManager.Instance.Unpause();
+                            });
+                        }).ShowButton("upgrade", () =>
+                        {
+                            Debug.Log("Upgrade!!");
+
                             GameManager.Instance.FreezPlayer(false);
                             GameManager.Instance.Unpause();
-                        }).ShowButton("silver", () =>
+                        }).ShowButton("close", () =>
                         {
-                            GameManager.Instance.StartExcavator(1, 0, 60, 0);
-                            ExcavatorControl.Instance.ExcavatorOn(1);
-                            GameManager.Instance.FreezPlayer(false);
-                            GameManager.Instance.Unpause();
-                        }).ShowButton("gold", () =>
-                        {
-                            GameManager.Instance.StartExcavator(1, 0, 0, 10);
-                            ExcavatorControl.Instance.ExcavatorOn(1);
                             GameManager.Instance.FreezPlayer(false);
                             GameManager.Instance.Unpause();
                         });
-                    }).ShowButton("upgrade", () =>
+                    }
+                    else
                     {
-                        Debug.Log("Upgrade!!");
-
-                        GameManager.Instance.FreezPlayer(false);
-                        GameManager.Instance.Unpause();
-                    }).ShowButton("close", () =>
-                    {
-                        GameManager.Instance.FreezPlayer(false);
-                        GameManager.Instance.Unpause();
-                    });
+                        if (GameManager.Instance.ext[1].finishedFlag)
+                        {
+                            Excavator e = GameManager.Instance.ext[1];
+                            e.finishedFlag = false;
+                            GameManager.Instance.AddCopper(e.CopperPerMin);
+                            GameManager.Instance.AddSilver(e.SilverPerMin);
+                            GameManager.Instance.AddGold(e.GoldPerMin);
+                            GameManager.Instance.RestartExcavator(1);
+                            if (e.CopperPerMin > 0)
+                            {
+                                NotificationText.Instance.AddNotification("Copper + " + e.CopperPerMin);
+                            }
+                            if (e.SilverPerMin > 0)
+                            {
+                                NotificationText.Instance.AddNotification("Silver + " + e.SilverPerMin);
+                            }
+                            if (e.GoldPerMin > 0)
+                            {
+                                NotificationText.Instance.AddNotification("Gold + " + e.GoldPerMin);
+                            }
+                        }
+                    }
+                        
                 }
 
             }

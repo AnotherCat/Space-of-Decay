@@ -29,7 +29,7 @@ public class NotificationText : MonoBehaviour {
 		
 	}
 
-    public void NotificationAdd(string str)
+    public void AddNotification(string str)
     {
         NotificationAdd(str, 3);
     }
