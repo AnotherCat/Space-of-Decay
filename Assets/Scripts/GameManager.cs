@@ -158,7 +158,7 @@ public class GameManager : MonoBehaviour {
         e.tick = 0;
         ExcavatorControl.Instance.ExcavatorOff(index);
         e.finishedFlag = true;
-        NotificationText.Instance.AddNotification("Excavator0" + index + " finish process.");
+        NotificationText.Instance.AddNotification("Excavator0" + (index+1) + " finish process.");
     }
     public void StopExcavator(int index)
     {
