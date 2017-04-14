@@ -38,23 +38,28 @@ public class PlayerRaycast : MonoBehaviour {
                 {
                     GameManager.Instance.FreezPlayer(true);
                     GameManager.Instance.Pause();
-                    ((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("computer")).SetText("Computer", "this is computer.").ShowButton("craft", () =>
-                    {
-                        GameManager.Instance.FreezPlayer(false);
-                        GameManager.Instance.Unpause();
-                    }).ShowButton("excavator", () =>
-                    {
-                        GameManager.Instance.FreezPlayer(false);
-                        GameManager.Instance.Unpause();
-                    }).ShowButton("weapon", () =>
-                    {
-                        GameManager.Instance.FreezPlayer(false);
-                        GameManager.Instance.Unpause();
-                    }).ShowButton("close", () =>
-                    {
-                        GameManager.Instance.FreezPlayer(false);
-                        GameManager.Instance.Unpause();
-                    });
+                    ((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("dragdrop")).ShowButton("close", () =>
+                     {
+                         GameManager.Instance.FreezPlayer(false);
+                         GameManager.Instance.Unpause();
+                     });
+                    //((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("computer")).SetText("Computer", "this is computer.").ShowButton("craft", () =>
+                    //{
+                    //    GameManager.Instance.FreezPlayer(false);
+                    //    GameManager.Instance.Unpause();
+                    //}).ShowButton("excavator", () =>
+                    //{
+                    //    GameManager.Instance.FreezPlayer(false);
+                    //    GameManager.Instance.Unpause();
+                    //}).ShowButton("weapon", () =>
+                    //{
+                    //    GameManager.Instance.FreezPlayer(false);
+                    //    GameManager.Instance.Unpause();
+                    //}).ShowButton("close", () =>
+                    //{
+                    //    GameManager.Instance.FreezPlayer(false);
+                    //    GameManager.Instance.Unpause();
+                    //});
                 }
             }
             else if (name.StartsWith("excavator1"))
