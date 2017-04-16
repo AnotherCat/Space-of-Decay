@@ -6,15 +6,14 @@ using UnityEngine.EventSystems;
 
 public class Dropzone : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerExitHandler
 {
-
-    public Draggable.Slot TypeOfItem = Draggable.Slot.ITEM1;
+    public InventoryManager.Slot TypeOfItem = InventoryManager.Slot.INVENTORY;
 
     public void OnDrop(PointerEventData eventData)
     {
         Draggable d = eventData.pointerDrag.GetComponent<Draggable>();
         if(d != null)
         {
-            if(TypeOfItem == d.TypeOfItem || TypeOfItem == Draggable.Slot.INVENTORY)
+            if(TypeOfItem == d.TypeOfItem || TypeOfItem == InventoryManager.Slot.INVENTORY)
             {
                 d.parentToReturnTo = transform;
                 d.transform.position = transform.position;
@@ -30,7 +29,7 @@ public class Dropzone : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
         Draggable d = eventData.pointerDrag.GetComponent<Draggable>();
         if (d != null)
         {
-            if(TypeOfItem == d.TypeOfItem || TypeOfItem == Draggable.Slot.INVENTORY)
+            if(TypeOfItem == d.TypeOfItem || TypeOfItem == InventoryManager.Slot.INVENTORY)
             {
                 d.placeholderParent = transform;
             }
@@ -45,7 +44,7 @@ public class Dropzone : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
         Draggable d = eventData.pointerDrag.GetComponent<Draggable>();
         if(d != null && d.parentToReturnTo == transform)
         {
-            if(TypeOfItem == d.TypeOfItem || TypeOfItem == Draggable.Slot.INVENTORY)
+            if(TypeOfItem == d.TypeOfItem || TypeOfItem == InventoryManager.Slot.INVENTORY)
             {
                 d.placeholderParent = d.parentToReturnTo;
             }

@@ -15,20 +15,34 @@ public class PlayerRaycast : MonoBehaviour {
         if (Physics.Raycast(FPSCam.transform.position, FPSCam.transform.forward, out hit, 2))
         {
             string name = hit.collider.name;
-            if (name.StartsWith("button1") || name.StartsWith("button2"))
+            if (name.StartsWith("door1")) // button
             {
                 HandPanel.SetActive(true);
                 if (Input.GetKeyDown(KeyCode.E))
                 {
-                    DoorsControl.Instance.OpenDoor(0);
+                    if (DoorsControl.Instance.locked[0])
+                    {
+                        NotificationText.Instance.AddNotification("Locked");
+                    }
+                    else
+                    {
+                        DoorsControl.Instance.OpenDoor(0);
+                    }
                 }
             }
-            else if (name.StartsWith("button3") || name.StartsWith("button4"))
+            else if (name.StartsWith("door2")) // button
             {
                 HandPanel.SetActive(true);
                 if (Input.GetKeyDown(KeyCode.E))
                 {
-                    DoorsControl.Instance.OpenDoor(1);
+                    if (DoorsControl.Instance.locked[1])
+                    {
+                        NotificationText.Instance.AddNotification("Locked");
+                    }
+                    else
+                    {
+                        DoorsControl.Instance.OpenDoor(1);
+                    }
                 }
             }
             else if (name.StartsWith("computer"))
@@ -38,28 +52,12 @@ public class PlayerRaycast : MonoBehaviour {
                 {
                     GameManager.Instance.FreezPlayer(true);
                     GameManager.Instance.Pause();
-                    ((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("dragdrop")).ShowButton("close", () =>
-                     {
-                         GameManager.Instance.FreezPlayer(false);
-                         GameManager.Instance.Unpause();
-                     });
-                    //((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("computer")).SetText("Computer", "this is computer.").ShowButton("craft", () =>
-                    //{
-                    //    GameManager.Instance.FreezPlayer(false);
-                    //    GameManager.Instance.Unpause();
-                    //}).ShowButton("excavator", () =>
-                    //{
-                    //    GameManager.Instance.FreezPlayer(false);
-                    //    GameManager.Instance.Unpause();
-                    //}).ShowButton("weapon", () =>
-                    //{
-                    //    GameManager.Instance.FreezPlayer(false);
-                    //    GameManager.Instance.Unpause();
-                    //}).ShowButton("close", () =>
-                    //{
-                    //    GameManager.Instance.FreezPlayer(false);
-                    //    GameManager.Instance.Unpause();
-                    //});
+                    ((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("computer")).SetText("Computer", "<ข้อความระบุว่า ให้รีบออกไปจากที่นี่>\n<รีบไปที่ยานอวกาศ!!>").ShowButton("close", () =>
+                    {
+                        DoorsControl.Instance.locked[0] = false;
+                        GameManager.Instance.FreezPlayer(false);
+                        GameManager.Instance.Unpause();
+                    });
                 }
             }
             else if (name.StartsWith("excavator1"))
@@ -192,10 +190,9 @@ public class PlayerRaycast : MonoBehaviour {
                 HandPanel.SetActive(true);
                 if (Input.GetKeyDown(KeyCode.E))
                 {
-
                     GameManager.Instance.FreezPlayer(true);
                     GameManager.Instance.Pause();
-                    ((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("popup")).SetText("Excavator03<Broken>", "Broken...").ShowButton("ok", () =>
+                    ((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("popup")).SetText("Excavator03<Broken>", "<Broken...>").ShowButton("ok", () =>
                     {
 
                         GameManager.Instance.FreezPlayer(false);
@@ -206,7 +203,29 @@ public class PlayerRaycast : MonoBehaviour {
             else if (name.StartsWith("rocket"))
             {
                 HandPanel.SetActive(true);
-
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    GameManager.Instance.FreezPlayer(true);
+                    GameManager.Instance.Pause();
+                    
+                    ((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("rocket")).SetText("Rocket", "<Broken...>").ShowButton("end", () =>
+                    {
+                        NotificationText.Instance.AddNotification("Cant");
+                        GameManager.Instance.FreezPlayer(false);
+                        GameManager.Instance.Unpause();
+                    }).ShowButton("fix", () =>
+                    {
+                        ((uMyGUI_PopupDragdrap)uMyGUI_PopupManager.Instance.ShowPopup("dragdrop")).ShowDragdropPanel("rocket").ShowButton("close", () =>
+                        {
+                            GameManager.Instance.FreezPlayer(false);
+                            GameManager.Instance.Unpause();
+                        });
+                    }).ShowButton("close", () =>
+                    {
+                        GameManager.Instance.FreezPlayer(false);
+                        GameManager.Instance.Unpause();
+                    });
+                }
             }
             else
             {

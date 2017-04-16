@@ -4,18 +4,19 @@ using UnityEngine;
 
 public class ExcavatorControl : MonoBehaviour {
 
-    public static ExcavatorControl Instance;
-
-    public Animator[] ExcavatorAnimators;
-
+    private static ExcavatorControl s_instance = null;
+    public static ExcavatorControl Instance
+    {
+        get { return s_instance; }
+    }
     private void Awake()
     {
-        if(Instance == null)
-        {
-            Instance = this;
-        }
+        if (s_instance != null) Debug.LogError("ExcavatorControll already exists.");
+        s_instance = this;
     }
 
+    public Animator[] ExcavatorAnimators;
+    
     // Use this for initialization
     void Start () {
 

@@ -12,14 +12,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
     GameObject placeholder = null;
 
-    public enum Slot
-    {
-        INVENTORY,
-        ITEM1,
-        ITEM2,
-        ITEM3
-    }
-    public Slot TypeOfItem = Slot.ITEM1;
+    public InventoryManager.Slot TypeOfItem = InventoryManager.Slot.INVENTORY;
 
     public void OnBeginDrag(PointerEventData eventData)
     {
@@ -38,6 +31,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
         transform.SetParent(transform.parent.parent);
 
         GetComponent<CanvasGroup>().blocksRaycasts = false;
+        InventoryManager.Instance.OnDragItem(TypeOfItem, parentToReturnTo.GetComponent<Dropzone>().TypeOfItem);
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -47,24 +41,25 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
         if (placeholder.transform.parent != placeholderParent)
             placeholder.transform.SetParent(placeholderParent);
 
-        int newSiblingIndex = placeholderParent.childCount;
+        //int newSiblingIndex = placeholderParent.childCount;
 
-        for(int i = 0;i < placeholderParent.childCount; i++)
-        {
-            if(transform.position.x < placeholderParent.GetChild(i).position.x)
-            {
-                newSiblingIndex = i;
+        //for(int i = 0;i < placeholderParent.childCount; i++)
+        //{
+        //    if(transform.position.x < placeholderParent.GetChild(i).position.x)
+        //    {
+        //        newSiblingIndex = i;
 
-                if(placeholder.transform.GetSiblingIndex() < newSiblingIndex)
-                {
-                    newSiblingIndex--;
-                }
+        //        if(placeholder.transform.GetSiblingIndex() < newSiblingIndex)
+        //        {
+        //            newSiblingIndex--;
+        //        }
 
-                break;
-            }
-        }
+        //        break;
+        //    }
+        //}
 
-        placeholder.transform.SetSiblingIndex(newSiblingIndex);
+        //placeholder.transform.SetSiblingIndex(newSiblingIndex);
+        
     }
 
     public void OnEndDrag(PointerEventData eventData)
@@ -75,5 +70,6 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
         GetComponent<CanvasGroup>().blocksRaycasts = true;
 
         Destroy(placeholder);
+        InventoryManager.Instance.OnDropItem(TypeOfItem, parentToReturnTo.GetComponent<Dropzone>().TypeOfItem);
     }
 }

@@ -42,7 +42,18 @@ public class Weapon
 
 public class GameManager : MonoBehaviour {
 
-    public static GameManager Instance;
+    private static GameManager s_instance = null;
+    public static GameManager Instance { get { return s_instance; } }
+
+    private void Awake()
+    {
+        if (s_instance != null) Debug.LogError("GameManager already exists.");
+        s_instance = this;
+    }
+    private void OnDestroy()
+    {
+        if (s_instance == this) s_instance = null;
+    }
 
     // fps
     public CharacterController cc;
@@ -60,15 +71,7 @@ public class GameManager : MonoBehaviour {
     public int Copper = 0;
     public int Silver = 0;
     public int Gold = 0;
-
-    private void Awake()
-    {
-        if(Instance == null)
-        {
-            Instance = this;
-        }
-    }
-
+    
     // Use this for initialization
     void Start () {
         NewGame();

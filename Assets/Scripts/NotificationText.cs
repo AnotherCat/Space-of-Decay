@@ -5,19 +5,29 @@ using UnityEngine.UI;
 
 public class NotificationText : MonoBehaviour {
 
-    public static NotificationText Instance;
+    private static NotificationText s_instance = null;
+    public static NotificationText Instance
+    {
+        get
+        {
+            return s_instance;
+        }
+    }
+    private void Awake()
+    {
+        if (s_instance != null) Debug.LogError("NotificationText already exists.");
+        s_instance = this;
+    }
+    private void OnDestroy()
+    {
+        if (s_instance == this) s_instance = null;
+    }
 
     public Transform parentCanvas;
 
     public string TextPrefabPath = "";
 
-    private void Awake()
-    {
-        if(Instance == null)
-        {
-            Instance = this;
-        }
-    }
+    
 
     // Use this for initialization
     void Start () {
@@ -31,10 +41,10 @@ public class NotificationText : MonoBehaviour {
 
     public void AddNotification(string str)
     {
-        NotificationAdd(str, 3);
+        AddNotification(str, 3);
     }
 
-    public void NotificationAdd(string str,float time)
+    public void AddNotification(string str,float time)
     {
         GameObject t = Instantiate(Resources.Load<GameObject>(TextPrefabPath));
         t.GetComponentInChildren<Text>().text = str;
