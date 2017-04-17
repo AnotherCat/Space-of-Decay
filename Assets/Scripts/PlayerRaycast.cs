@@ -81,7 +81,7 @@ public class PlayerRaycast : MonoBehaviour
                             GameManager.Instance.FreezPlayer(false);
                             GameManager.Instance.Unpause();
                             InventoryManager.Instance.AddItem(0);
-                            NotificationText.Instance.AddNotification("Red Keycard Added!!!");
+                            NotificationText.Instance.AddNotification("<Red Keycard> Added!!!");
                             computerFirst = false;
                         });
                     }
@@ -232,7 +232,7 @@ public class PlayerRaycast : MonoBehaviour
                                      NotificationText.Instance.AddNotification("Remove " + pc + "Copper");
                                      NotificationText.Instance.AddNotification("Remove " + ps + "Silver");
                                      NotificationText.Instance.AddNotification("Remove " + pg + "Gold");
-                                     NotificationText.Instance.AddNotification("Red Keycard Added!!!");
+                                     NotificationText.Instance.AddNotification("<Red Keycard> Added!!!");
                                      GameManager.Instance.FreezPlayer(false);
                                      GameManager.Instance.Unpause();
                                  }).ShowButton("no", () =>
@@ -256,7 +256,7 @@ public class PlayerRaycast : MonoBehaviour
                                     NotificationText.Instance.AddNotification("Remove " + pc + "Copper");
                                     NotificationText.Instance.AddNotification("Remove " + ps + "Silver");
                                     NotificationText.Instance.AddNotification("Remove " + pg + "Gold");
-                                    NotificationText.Instance.AddNotification("Green Keycard Added!!!");
+                                    NotificationText.Instance.AddNotification("<Green Keycard> Added!!!");
                                     GameManager.Instance.FreezPlayer(false);
                                     GameManager.Instance.Unpause();
                                 }).ShowButton("no", () =>
@@ -296,7 +296,7 @@ public class PlayerRaycast : MonoBehaviour
                                 GameManager.Instance.RemoveGold(40);
                                 InventoryManager.Instance.AddItem(6);
                                 NotificationText.Instance.AddNotification("Remove 40 Gold");
-                                NotificationText.Instance.AddNotification("Control Chip Part 1 added!!");
+                                NotificationText.Instance.AddNotification("<Control Chip Part 1> added!!");
                                 GameManager.Instance.FreezPlayer(false);
                                 GameManager.Instance.Unpause();
                             }).ShowButton("no", () =>
@@ -315,7 +315,7 @@ public class PlayerRaycast : MonoBehaviour
                             GameManager.Instance.RemoveGold(100);
                             InventoryManager.Instance.AddItem(7);
                             NotificationText.Instance.AddNotification("Remove 100 Gold");
-                            NotificationText.Instance.AddNotification("Control Chip Part 2 added!!");
+                            NotificationText.Instance.AddNotification("<Control Chip Part 2> added!!");
                             GameManager.Instance.FreezPlayer(false);
                             GameManager.Instance.Unpause();
                         }).ShowButton("no", () =>
@@ -334,7 +334,7 @@ public class PlayerRaycast : MonoBehaviour
                             GameManager.Instance.RemoveGold(200);
                             InventoryManager.Instance.AddItem(8);
                             NotificationText.Instance.AddNotification("Remove 200 Gold");
-                            NotificationText.Instance.AddNotification("Control Chip Part 3 added!!");
+                            NotificationText.Instance.AddNotification("<Control Chip Part 3> added!!");
                             GameManager.Instance.FreezPlayer(false);
                             GameManager.Instance.Unpause();
                         }).ShowButton("no", () =>
@@ -354,7 +354,7 @@ public class PlayerRaycast : MonoBehaviour
                             GameManager.Instance.RemoveGold(40);
                             InventoryManager.Instance.AddItem(9);
                             NotificationText.Instance.AddNotification("Remove 40 Gold");
-                            NotificationText.Instance.AddNotification("Navigator Part 1 added!!");
+                            NotificationText.Instance.AddNotification("<Navigator Part 1> added!!");
                             GameManager.Instance.FreezPlayer(false);
                             GameManager.Instance.Unpause();
                         }).ShowButton("no", () =>
@@ -373,7 +373,7 @@ public class PlayerRaycast : MonoBehaviour
                             GameManager.Instance.RemoveGold(100);
                             InventoryManager.Instance.AddItem(10);
                             NotificationText.Instance.AddNotification("Remove 100 Gold");
-                            NotificationText.Instance.AddNotification("Navigator Part 2 added!!");
+                            NotificationText.Instance.AddNotification("<Navigator Part 2> added!!");
                             GameManager.Instance.FreezPlayer(false);
                             GameManager.Instance.Unpause();
                         }).ShowButton("no", () =>
@@ -392,7 +392,7 @@ public class PlayerRaycast : MonoBehaviour
                             GameManager.Instance.RemoveGold(200);
                             InventoryManager.Instance.AddItem(11);
                             NotificationText.Instance.AddNotification("Remove 200 Gold");
-                            NotificationText.Instance.AddNotification("Navigator Part 3 added!!");
+                            NotificationText.Instance.AddNotification("<Navigator Part 3> added!!");
                             GameManager.Instance.FreezPlayer(false);
                             GameManager.Instance.Unpause();
                         }).ShowButton("no", () =>
@@ -412,7 +412,7 @@ public class PlayerRaycast : MonoBehaviour
                             GameManager.Instance.RemoveGold(40);
                             InventoryManager.Instance.AddItem(12);
                             NotificationText.Instance.AddNotification("Remove 40 Gold");
-                            NotificationText.Instance.AddNotification("Engine Part 1 added!!");
+                            NotificationText.Instance.AddNotification("<Engine Part 1> added!!");
                             GameManager.Instance.FreezPlayer(false);
                             GameManager.Instance.Unpause();
                         }).ShowButton("no", () =>
@@ -431,7 +431,7 @@ public class PlayerRaycast : MonoBehaviour
                             GameManager.Instance.RemoveGold(100);
                             InventoryManager.Instance.AddItem(13);
                             NotificationText.Instance.AddNotification("Remove 100 Gold");
-                            NotificationText.Instance.AddNotification("Engine Part 2 added!!");
+                            NotificationText.Instance.AddNotification("<Engine Part 2> added!!");
                             GameManager.Instance.FreezPlayer(false);
                             GameManager.Instance.Unpause();
                         }).ShowButton("no", () =>
@@ -450,7 +450,7 @@ public class PlayerRaycast : MonoBehaviour
                             GameManager.Instance.RemoveGold(200);
                             InventoryManager.Instance.AddItem(14);
                             NotificationText.Instance.AddNotification("Remove 200 Gold");
-                            NotificationText.Instance.AddNotification("Engine Part 3 added!!");
+                            NotificationText.Instance.AddNotification("<Engine Part 3> added!!");
                             GameManager.Instance.FreezPlayer(false);
                             GameManager.Instance.Unpause();
                         }).ShowButton("no", () =>
@@ -470,7 +470,7 @@ public class PlayerRaycast : MonoBehaviour
                             GameManager.Instance.RemoveGold(40);
                             InventoryManager.Instance.AddItem(15);
                             NotificationText.Instance.AddNotification("Remove 40 Gold");
-                            NotificationText.Instance.AddNotification("Fuel Ingredient 1 added!!");
+                            NotificationText.Instance.AddNotification("<Fuel Ingredient 1> added!!");
                             GameManager.Instance.FreezPlayer(false);
                             GameManager.Instance.Unpause();
                         }).ShowButton("no", () =>
@@ -489,7 +489,7 @@ public class PlayerRaycast : MonoBehaviour
                             GameManager.Instance.RemoveGold(100);
                             InventoryManager.Instance.AddItem(16);
                             NotificationText.Instance.AddNotification("Remove 100 Gold");
-                            NotificationText.Instance.AddNotification("Fuel Ingredient 2 added!!");
+                            NotificationText.Instance.AddNotification("<Fuel Ingredient 2> added!!");
                             GameManager.Instance.FreezPlayer(false);
                             GameManager.Instance.Unpause();
                         }).ShowButton("no", () =>
@@ -508,7 +508,7 @@ public class PlayerRaycast : MonoBehaviour
                             GameManager.Instance.RemoveGold(200);
                             InventoryManager.Instance.AddItem(17);
                             NotificationText.Instance.AddNotification("Remove 200 Gold");
-                            NotificationText.Instance.AddNotification("Fuel Ingredient 3 added!!");
+                            NotificationText.Instance.AddNotification("<Fuel Ingredient 3> added!!");
                             GameManager.Instance.FreezPlayer(false);
                             GameManager.Instance.Unpause();
                         }).ShowButton("no", () =>
