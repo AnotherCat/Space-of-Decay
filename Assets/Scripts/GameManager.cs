@@ -37,6 +37,7 @@ public class Excavator
 [Serializable]
 public class Weapon
 {
+    public int level;
     public int Damage;
 }
 
@@ -64,6 +65,9 @@ public class GameManager : MonoBehaviour {
 
     // HUD
     public GameObject HUDCanvas;
+    public Text copperText;
+    public Text silverText;
+    public Text goldText;
 
     // resources
     public Excavator[] ext;
@@ -75,7 +79,10 @@ public class GameManager : MonoBehaviour {
     // Use this for initialization
     void Start () {
         NewGame();
-	}
+        AddCopper(1000);
+        AddSilver(1000);
+        AddGold(1000);
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -115,7 +122,7 @@ public class GameManager : MonoBehaviour {
         Copper = 0;
         Silver = 0;
         Gold = 0;
-
+        UpdateResourceText();
         cc.transform.position = StartGamePoint.position;
 
         DoorsControl.Instance.CloseDoor(0);
@@ -188,7 +195,8 @@ public class GameManager : MonoBehaviour {
     }
     public void UpgradeWeapon()
     {
-        gun.Damage += 10;
+        gun.level += 1;
+        gun.Damage = gun.level * 10;
     }
     public void UpgradeExcavator(int index)
     {
@@ -206,29 +214,41 @@ public class GameManager : MonoBehaviour {
     public void AddCopper(int amount)
     {
         Copper += amount;
+        UpdateResourceText();
     }
     public void AddSilver(int amount)
     {
         Silver += amount;
+        UpdateResourceText();
     }
     public void AddGold(int amount)
     {
         Gold += amount;
+        UpdateResourceText();
     }
     public void RemoveCopper(int amount)
     {
         Copper -= amount;
         if (Copper < 0) Copper = 0;
+        UpdateResourceText();
     }
     public void RemoveSilver(int amount)
     {
         Silver -= amount;
         if (Silver < 0) Silver = 0;
+        UpdateResourceText();
     }
     public void RemoveGold(int amount)
     {
         Gold -= amount;
         if (Gold < 0) Gold = 0;
+        UpdateResourceText();
+    }
+    void UpdateResourceText()
+    {
+        copperText.text = "Copper : " + Copper;
+        silverText.text = "Silver : " + Silver;
+        goldText.text = "Gold : " + Gold;
     }
 
     public void Pause()

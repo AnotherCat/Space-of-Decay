@@ -31,7 +31,19 @@ public class InventoryManager : MonoBehaviour {
         CONTROL_CHIP,
         ENGINES,
         NAVIGATOR,
-        FUEL
+        FUEL,
+        CONTROL_CHIP1,
+        CONTROL_CHIP2,
+        CONTROL_CHIP3,
+        NAVIGATOR1,
+        NAVIGATOR2,
+        NAVIGATOR3,
+        ENGINES1,
+        ENGINES2,
+        ENGINES3,
+        FUEL1,
+        FUEL2,
+        FUEL3
     }
 
     public RectTransform[] m_item = new RectTransform[0];
@@ -56,6 +68,10 @@ public class InventoryManager : MonoBehaviour {
     public void RemoveItem(int index)
     {
         m_item[index].gameObject.SetActive(false);
+    }
+    public bool HasItem(int index)
+    {
+        return m_item[index].gameObject.activeSelf;
     }
 
     public void OnDropItem(Slot item,Slot dropzone)
