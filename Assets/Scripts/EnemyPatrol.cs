@@ -34,12 +34,39 @@ public class EnemyPatrol : MonoBehaviour {
         // cycling to the start if necessary.
         destPoint = (destPoint + 1) % points.Length;
     }
-
-
+    
     void Update () {
-        // Choose the next destination point when the agent gets
-        // close to the current one.
-        if (agent.remainingDistance < 0.5f)
-            GotoNextPoint();
+        Transform player = GameObject.FindGameObjectWithTag("Player").transform;
+        if (Vector3.Distance(transform.position, player.position) <= 6)
+        {
+            agent.destination = player.position;
+            if (Vector3.Distance(transform.position, player.position) <= 1f)
+            {
+                if(GameManager.Instance.Copper / 2 > 0)
+                {
+                    NotificationText.Instance.AddNotification("Lost " + GameManager.Instance.Copper / 2 + " Copper!!");
+                    GameManager.Instance.RemoveCopper(GameManager.Instance.Copper / 2);
+                }
+                if(GameManager.Instance.Silver / 2 > 0)
+                {
+                    NotificationText.Instance.AddNotification("Lost " + GameManager.Instance.Silver / 2 + " Silver!!");
+                    GameManager.Instance.RemoveSilver(GameManager.Instance.Silver / 2);
+                }
+                if(GameManager.Instance.Gold / 2 > 0)
+                {
+                    NotificationText.Instance.AddNotification("Lost " + GameManager.Instance.Gold / 2 + " Gold!!");
+                    GameManager.Instance.RemoveGold(GameManager.Instance.Gold / 2);
+                }
+                EnemyManager.Instance.OnEnemyDie();
+                Destroy(gameObject);
+            }
+        }
+        else
+        {
+            // Choose the next destination point when the agent gets
+            // close to the current one.
+            if (agent.remainingDistance < 0.5f)
+                GotoNextPoint();
+        }
     }
 }

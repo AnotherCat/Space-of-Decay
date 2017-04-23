@@ -176,6 +176,7 @@ public class InventoryManager : MonoBehaviour {
         {
             AddItem(2);
             NotificationText.Instance.AddNotification("<Control Chip> Added!!!");
+            EnemyManager.Instance.AddEnemy();
         }
     }
     void NavigatorResult()
@@ -184,6 +185,7 @@ public class InventoryManager : MonoBehaviour {
         {
             AddItem(3);
             NotificationText.Instance.AddNotification("<Navigator> Added!!!");
+            EnemyManager.Instance.AddEnemy();
         }
     }
     void EngineResult()
@@ -192,6 +194,7 @@ public class InventoryManager : MonoBehaviour {
         {
             AddItem(4);
             NotificationText.Instance.AddNotification("<Engine> Added!!!");
+            EnemyManager.Instance.AddEnemy();
         }
     }
     void FuelResult()
@@ -200,6 +203,7 @@ public class InventoryManager : MonoBehaviour {
         {
             AddItem(5);
             NotificationText.Instance.AddNotification("<Fuel> Added!!!");
+            EnemyManager.Instance.AddEnemy();
         }
     }
     void EndgameResult()

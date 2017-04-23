@@ -11,6 +11,7 @@ public class PlayerRaycast : MonoBehaviour
     public GameObject HandPanel;
 
     public bool computerFirst = true;
+    public bool excavatorFirst = true;
 
     // Update is called once per frame
     void Update()
@@ -536,18 +537,36 @@ public class PlayerRaycast : MonoBehaviour
                             ExcavatorControl.Instance.ExcavatorOn(0);
                             GameManager.Instance.FreezPlayer(false);
                             GameManager.Instance.Unpause();
+                            if (excavatorFirst)
+                            {
+                                EnemyManager.Instance.AddEnemy(0);
+                                NotificationText.Instance.AddNotification("Enemy Appear Take Care");
+                                excavatorFirst = false;
+                            }
                         }).ShowButton("silver", () =>
                         {
                             GameManager.Instance.StartExcavator(0, 0, 60, 0);
                             ExcavatorControl.Instance.ExcavatorOn(0);
                             GameManager.Instance.FreezPlayer(false);
                             GameManager.Instance.Unpause();
+                            if (excavatorFirst)
+                            {
+                                EnemyManager.Instance.AddEnemy(0);
+                                NotificationText.Instance.AddNotification("Enemy Appear Take Care");
+                                excavatorFirst = false;
+                            }
                         }).ShowButton("gold", () =>
                         {
                             GameManager.Instance.StartExcavator(0, 0, 0, 10);
                             ExcavatorControl.Instance.ExcavatorOn(0);
                             GameManager.Instance.FreezPlayer(false);
                             GameManager.Instance.Unpause();
+                            if (excavatorFirst)
+                            {
+                                EnemyManager.Instance.AddEnemy(0);
+                                NotificationText.Instance.AddNotification("Enemy Appear Take Care");
+                                excavatorFirst = false;
+                            }
                         }).ShowButton("close", () =>
                         {
                             GameManager.Instance.FreezPlayer(false);

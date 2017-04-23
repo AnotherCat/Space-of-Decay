@@ -37,8 +37,8 @@ public class Excavator
 [Serializable]
 public class Weapon
 {
-    public int level;
-    public int Damage;
+    public int level = 0;
+    public float maxCharge = 4;
 }
 
 public class GameManager : MonoBehaviour {
@@ -68,6 +68,7 @@ public class GameManager : MonoBehaviour {
     public Text copperText;
     public Text silverText;
     public Text goldText;
+    public Text GunLevelText;
 
     // resources
     public Excavator[] ext;
@@ -79,9 +80,6 @@ public class GameManager : MonoBehaviour {
     // Use this for initialization
     void Start () {
         NewGame();
-        AddCopper(1000);
-        AddSilver(1000);
-        AddGold(1000);
     }
 	
 	// Update is called once per frame
@@ -105,7 +103,7 @@ public class GameManager : MonoBehaviour {
 
     public void GameStart()
     {
-
+        GunLevelText.text = "Weapon Level : " + gun.level;
     }
     public void NewGame()
     {
@@ -118,6 +116,7 @@ public class GameManager : MonoBehaviour {
         ext[1].reset();
 
         gun = new Weapon();
+        UpgradeWeapon();
 
         Copper = 0;
         Silver = 0;
@@ -196,7 +195,8 @@ public class GameManager : MonoBehaviour {
     public void UpgradeWeapon()
     {
         gun.level += 1;
-        gun.Damage = gun.level * 10;
+        gun.maxCharge = gun.maxCharge - (gun.level * 0.2f);
+        GunLevelText.text = "Weapon Level : " + gun.level;
     }
     public void UpgradeExcavator(int index)
     {

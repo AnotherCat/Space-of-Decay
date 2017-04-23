@@ -27,21 +27,16 @@ public class EnemyManager : MonoBehaviour {
     public Transform[] SpawnPoints;
     public Transform[] PatrolPointsRoom1;
     public Transform[] PatrolPointsRoom2;
-
-    // Use this for initialization
-    void Start () {
-
-    }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
+    
     public void AddEnemy(int AddToRoom)
     {
         Transform t = Instantiate(Resources.Load<Transform>("Enemy/Enemy"),SpawnPoints[AddToRoom].position,Quaternion.identity,EnemyParent.transform);
         t.GetComponent<EnemyPatrol>().points = GetPatrolPoint(AddToRoom);
+    }
+
+    public void AddEnemy()
+    {
+        AddEnemy(Random.Range(0, 1) == 0 ? 0 : 1);
     }
 
     Transform[] GetPatrolPoint(int index)
@@ -56,5 +51,16 @@ public class EnemyManager : MonoBehaviour {
         }
 
         return PatrolPointsRoom1;
+    }
+
+    public void OnEnemyDie()
+    {
+        StartCoroutine(CooldownTimeEnemy(2));
+    }
+
+    public IEnumerator CooldownTimeEnemy(float time)
+    {
+        yield return new WaitForSeconds(time);
+        AddEnemy();
     }
 }
