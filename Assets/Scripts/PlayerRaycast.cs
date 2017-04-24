@@ -706,6 +706,24 @@ public class PlayerRaycast : MonoBehaviour
                     });
                 }
             }
+            else if (name.StartsWith("poster1"))
+            {
+                GameManager.Instance.AddCopper(50);
+                hit.collider.gameObject.GetComponent<BoxCollider>().enabled = false;
+                NotificationText.Instance.AddNotification("ได้รับ ทองแดง 50");
+            }
+            else if (name.StartsWith("poster2"))
+            {
+                GameManager.Instance.AddSilver(30);
+                hit.collider.gameObject.GetComponent<BoxCollider>().enabled = false;
+                NotificationText.Instance.AddNotification("ได้รับ แร่เงิน 30");
+            }
+            else if (name.StartsWith("poster3"))
+            {
+                GameManager.Instance.AddGold(5);
+                hit.collider.gameObject.GetComponent<BoxCollider>().enabled = false;
+                NotificationText.Instance.AddNotification("ได้รับ แร่ทอง 5");
+            }
             else
             {
                 hideAllUI();

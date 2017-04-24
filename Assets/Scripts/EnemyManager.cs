@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 
 public class EnemyManager : MonoBehaviour {
+    Animator anim;
 
     private static EnemyManager s_instance = null;
     public static EnemyManager Instance
@@ -55,9 +56,8 @@ public class EnemyManager : MonoBehaviour {
 
     public void OnEnemyDie()
     {
-        StartCoroutine(CooldownTimeEnemy(2));
+        StartCoroutine(CooldownTimeEnemy(20));
     }
-
     public IEnumerator CooldownTimeEnemy(float time)
     {
         yield return new WaitForSeconds(time);
