@@ -7,12 +7,15 @@ public class PlayerShoot : MonoBehaviour {
 
     public Camera FPSCam;
     public Slider sliderMid;
+    public AudioClip[] clips; // 0 charge , 1 - 5 laser shoot
     
     private float foo;
+    private AudioSource s;
 
     // Use this for initialization
     void Start () {
         foo = 0;
+        s = GetComponent<AudioSource>();
 	}
 	
 	// Update is called once per frame
@@ -23,9 +26,13 @@ public class PlayerShoot : MonoBehaviour {
             if (hit.collider.tag.StartsWith("Enemy"))
             {
                 foo += Time.deltaTime;
-                if(foo >= GameManager.Instance.gun.maxCharge)
+                s.clip = clips[0];
+                s.Play();
+                if (foo >= GameManager.Instance.gun.maxCharge)
                 {
                     foo = 0;
+                    s.clip = clips[Random.Range(1, clips.Length)];
+                    s.Play();
                     EnemyManager.Instance.OnEnemyDie();
                     Destroy(hit.collider.gameObject);
                 }

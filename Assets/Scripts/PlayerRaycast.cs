@@ -11,7 +11,10 @@ public class PlayerRaycast : MonoBehaviour
     public GameObject HandPanel;
 
     public bool computerFirst = true;
+    public bool computer3First = true;
     public bool excavatorFirst = true;
+    public bool door1First = true;
+    public bool rocketFirst = true;
 
     // Update is called once per frame
     void Update()
@@ -25,17 +28,14 @@ public class PlayerRaycast : MonoBehaviour
                 HandPanel.SetActive(true);
                 if (Input.GetKeyDown(KeyCode.E))
                 {
-                    //if (DoorsControl.Instance.locked[0])
-                    //{
-                    //    NotificationText.Instance.AddNotification("<Locked>");
-                    //}
-                    //else
-                    //{
-                    //    DoorsControl.Instance.OpenDoor(0);
-                    //}
                     if (InventoryManager.Instance.HasItem(0))
                     {
                         DoorsControl.Instance.OpenDoor(0);
+                        if (door1First)
+                        {
+                            UIFloatManager.Instance.ShowUI(2);
+                            door1First = false;
+                        }
                     }
                     else
                     {
@@ -48,14 +48,6 @@ public class PlayerRaycast : MonoBehaviour
                 HandPanel.SetActive(true);
                 if (Input.GetKeyDown(KeyCode.E))
                 {
-                    //if (DoorsControl.Instance.locked[1])
-                    //{
-                    //    NotificationText.Instance.AddNotification("<Locked>");
-                    //}
-                    //else
-                    //{
-                    //    DoorsControl.Instance.OpenDoor(1);
-                    //}
                     if (InventoryManager.Instance.HasItem(1))
                     {
                         DoorsControl.Instance.OpenDoor(1);
@@ -84,6 +76,7 @@ public class PlayerRaycast : MonoBehaviour
                             InventoryManager.Instance.AddItem(0);
                             NotificationText.Instance.AddNotification("<Red Keycard> Added!!!");
                             computerFirst = false;
+                            UIFloatManager.Instance.ShowUI(1);
                         });
                     }
                     else
@@ -149,6 +142,7 @@ public class PlayerRaycast : MonoBehaviour
                 {
                     GameManager.Instance.FreezPlayer(true);
                     GameManager.Instance.Pause();
+                    
                     ((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("craft1")).SetText("computer2", "<craft physics and weapon>").ShowButton("craft", () =>
                      {
                         // craft control chip
@@ -206,6 +200,11 @@ public class PlayerRaycast : MonoBehaviour
                 {
                     GameManager.Instance.FreezPlayer(true);
                     GameManager.Instance.Pause();
+                    if (computer3First)
+                    {
+                        computer3First = false;
+                        UIFloatManager.Instance.ShowUI(4);
+                    }
                     uMyGUI_PopupButtons popup = ((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("computer3")).ShowButton("close", () =>
                     {
                         GameManager.Instance.FreezPlayer(false);
@@ -542,6 +541,7 @@ public class PlayerRaycast : MonoBehaviour
                                 EnemyManager.Instance.AddEnemy(0);
                                 NotificationText.Instance.AddNotification("Enemy Appear Take Care");
                                 excavatorFirst = false;
+                                UIFloatManager.Instance.HideUI();
                             }
                         }).ShowButton("silver", () =>
                         {
@@ -554,6 +554,7 @@ public class PlayerRaycast : MonoBehaviour
                                 EnemyManager.Instance.AddEnemy(0);
                                 NotificationText.Instance.AddNotification("Enemy Appear Take Care");
                                 excavatorFirst = false;
+                                UIFloatManager.Instance.HideUI();
                             }
                         }).ShowButton("gold", () =>
                         {
@@ -566,6 +567,7 @@ public class PlayerRaycast : MonoBehaviour
                                 EnemyManager.Instance.AddEnemy(0);
                                 NotificationText.Instance.AddNotification("Enemy Appear Take Care");
                                 excavatorFirst = false;
+                                UIFloatManager.Instance.HideUI();
                             }
                         }).ShowButton("close", () =>
                         {
@@ -686,6 +688,12 @@ public class PlayerRaycast : MonoBehaviour
                 {
                     GameManager.Instance.FreezPlayer(true);
                     GameManager.Instance.Pause();
+
+                    if (rocketFirst)
+                    {
+                        rocketFirst = false;
+                        UIFloatManager.Instance.ShowUI(3);
+                    }
 
                     ((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("rocket")).SetText("Rocket", "<Broken...>").ShowButton("end", () =>
                     {

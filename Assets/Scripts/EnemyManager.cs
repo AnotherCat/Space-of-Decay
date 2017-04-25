@@ -28,11 +28,22 @@ public class EnemyManager : MonoBehaviour {
     public Transform[] SpawnPoints;
     public Transform[] PatrolPointsRoom1;
     public Transform[] PatrolPointsRoom2;
-    
+
+    public AudioClip[] clips; // 0 : die, 1 spawn
+
+    private AudioSource s;
+
+    private void Start()
+    {
+        s = GetComponent<AudioSource>();
+    }
+
     public void AddEnemy(int AddToRoom)
     {
         Transform t = Instantiate(Resources.Load<Transform>("Enemy/Enemy"),SpawnPoints[AddToRoom].position,Quaternion.identity,EnemyParent.transform);
         t.GetComponent<EnemyPatrol>().points = GetPatrolPoint(AddToRoom);
+        s.clip = clips[1];
+        s.Play();
     }
 
     public void AddEnemy()
@@ -56,6 +67,8 @@ public class EnemyManager : MonoBehaviour {
 
     public void OnEnemyDie()
     {
+        s.clip = clips[0];
+        s.Play();
         StartCoroutine(CooldownTimeEnemy(20));
     }
     public IEnumerator CooldownTimeEnemy(float time)

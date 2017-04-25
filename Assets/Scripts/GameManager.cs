@@ -104,6 +104,7 @@ public class GameManager : MonoBehaviour {
     public void GameStart()
     {
         GunLevelText.text = "Weapon Level : " + gun.level;
+        UIFloatManager.Instance.ShowUI(0);
     }
     public void NewGame()
     {
