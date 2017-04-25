@@ -67,14 +67,14 @@ public class PlayerRaycast : MonoBehaviour
                     {
                         GameManager.Instance.FreezPlayer(true);
                         GameManager.Instance.Pause();
-                        ((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("computer")).SetText("Computer", "<ข้อความระบุว่า ให้รีบออกไปจากที่นี่>\n<รีบไปที่ยานอวกาศ!!>").ShowButton("close", () =>
+                        ((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("computer")).SetText("Computer", "<ข้อความระบุว่า หาทางออกไปจากที่นี้>\n<รีบไปที่ยานอวกาศ!!>").ShowButton("close", () =>
                         {
                             DoorsControl.Instance.locked[0] = false;
                             //DoorsControl.Instance.locked[1] = false;
                             GameManager.Instance.FreezPlayer(false);
                             GameManager.Instance.Unpause();
                             InventoryManager.Instance.AddItem(0);
-                            NotificationText.Instance.AddNotification("<Red Keycard> Added!!!");
+                            NotificationText.Instance.AddNotification("ได้รับ คีย์การ์ดสีแดง!!!");
                             computerFirst = false;
                             UIFloatManager.Instance.ShowUI(1);
                         });
@@ -697,7 +697,7 @@ public class PlayerRaycast : MonoBehaviour
                         NotificationText.Instance.AddNotification("หาอุปกรณ์ในการซ่อมแซมเพิ่ม");
                     }
 
-                    ((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("rocket")).SetText("Rocket", "<Broken...>").ShowButton("end", () =>
+                    ((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("rocket")).SetText("Rocket", "<ยานพัง มีอะไหล่ บางส่วนหายไป>").ShowButton("end", () =>
                     {
                         NotificationText.Instance.AddNotification("Cant");
                         GameManager.Instance.FreezPlayer(false);
