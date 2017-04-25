@@ -35,6 +35,24 @@ public class PlayerShoot : MonoBehaviour {
                     s.Play();
                     EnemyManager.Instance.OnEnemyDie();
                     Destroy(hit.collider.gameObject);
+                    if (Random.Range(0, 2) == 1)
+                    {
+                        int copper = Random.Range(20, 60);
+                        GameManager.Instance.AddCopper(copper);
+                        NotificationText.Instance.AddNotification(copper + " Copper Added !!");
+                    }
+                    if (Random.Range(0, 2) == 1)
+                    {
+                        int silver = Random.Range(10, 20);
+                        GameManager.Instance.AddGold(silver);
+                        NotificationText.Instance.AddNotification(silver + " Silver Added !!");
+                    }
+                    if (Random.Range(0, 2) == 1)
+                    {
+                        int gold = Random.Range(2, 10);
+                        GameManager.Instance.AddGold(gold);
+                        NotificationText.Instance.AddNotification(gold + " Gold Added !!");
+                    }
                 }
             }
             else

@@ -540,7 +540,7 @@ public class PlayerRaycast : MonoBehaviour
                             if (excavatorFirst)
                             {
                                 EnemyManager.Instance.AddEnemy(0);
-                                NotificationText.Instance.AddNotification("Enemy Appear Take Care");
+                                NotificationText.Instance.AddNotification("เอเลียนปรากฏ <เล็งที่เอเลียนเพื่อชาจอาวุธ>",10);
                                 excavatorFirst = false;
                                 UIFloatManager.Instance.HideUI();
                             }
@@ -553,7 +553,7 @@ public class PlayerRaycast : MonoBehaviour
                             if (excavatorFirst)
                             {
                                 EnemyManager.Instance.AddEnemy(0);
-                                NotificationText.Instance.AddNotification("Enemy Appear Take Care");
+                                NotificationText.Instance.AddNotification("เอเลียนปรากฏ <เล็งที่เอเลียนเพื่อชาตจอาวุธ>",10);
                                 excavatorFirst = false;
                                 UIFloatManager.Instance.HideUI();
                             }
@@ -566,7 +566,7 @@ public class PlayerRaycast : MonoBehaviour
                             if (excavatorFirst)
                             {
                                 EnemyManager.Instance.AddEnemy(0);
-                                NotificationText.Instance.AddNotification("Enemy Appear Take Care");
+                                NotificationText.Instance.AddNotification("เอเลียนปรากฏ <เล็งที่เอเลียนเพื่อชาจอาวุธ>",10);
                                 excavatorFirst = false;
                                 UIFloatManager.Instance.HideUI();
                             }
