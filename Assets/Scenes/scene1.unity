@@ -4045,7 +4045,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: <Craft Item>
+  m_Text: "<\u0E02\u0E2D\u0E07\u0E17\u0E35\u0E48\u0E2A\u0E32\u0E21\u0E32\u0E23\u0E16\u0E04\u0E23\u0E32\u0E1F\u0E44\u0E14\u0E49>"
 --- !u!222 &218282414
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -29306,7 +29306,10 @@ MonoBehaviour:
   FPSCam: {fileID: 760811560}
   HandPanel: {fileID: 197366424}
   computerFirst: 1
+  computer3First: 1
   excavatorFirst: 1
+  door1First: 1
+  rocketFirst: 1
 --- !u!114 &1658678009
 MonoBehaviour:
   m_ObjectHideFlags: 0

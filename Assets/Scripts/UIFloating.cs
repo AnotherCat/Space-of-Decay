@@ -52,6 +52,7 @@ public class UIFloating : MonoBehaviour {
     }
     public void hide()
     {
+        if (instance == null) return;
         instance.gameObject.SetActive(false);
     }
 }

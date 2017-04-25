@@ -204,6 +204,7 @@ public class PlayerRaycast : MonoBehaviour
                     {
                         computer3First = false;
                         UIFloatManager.Instance.ShowUI(4);
+                        NotificationText.Instance.AddNotification("ขุดแร่ เพื่อมาคราฟของ");
                     }
                     uMyGUI_PopupButtons popup = ((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("computer3")).ShowButton("close", () =>
                     {
@@ -693,6 +694,7 @@ public class PlayerRaycast : MonoBehaviour
                     {
                         rocketFirst = false;
                         UIFloatManager.Instance.ShowUI(3);
+                        NotificationText.Instance.AddNotification("หาอุปกรณ์ในการซ่อมแซมเพิ่ม");
                     }
 
                     ((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("rocket")).SetText("Rocket", "<Broken...>").ShowButton("end", () =>
