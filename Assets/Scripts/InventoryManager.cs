@@ -74,6 +74,8 @@ public class InventoryManager : MonoBehaviour {
         return m_item[index].gameObject.activeSelf;
     }
 
+    public bool End = false;
+
     bool[] controlchip = new bool[3] { false, false, false };
     bool[] navigator = new bool[3] { false, false, false };
     bool[] engine = new bool[3] { false, false, false };
@@ -211,6 +213,7 @@ public class InventoryManager : MonoBehaviour {
         if(endgame[0] == true && endgame[1] == true && endgame[2] == true && endgame[3] == true)
         {
             NotificationText.Instance.AddNotification("BOOM!!! END GAME!!!");
+            End = true;
         }
     }
 }

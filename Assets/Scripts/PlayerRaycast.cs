@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using uMyGUI;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerRaycast : MonoBehaviour
@@ -109,19 +110,19 @@ public class PlayerRaycast : MonoBehaviour
 
                           }).ShowButton("excavator", () =>
                           {
-                              uMyGUI_PopupButtons p = ((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("popup")).SetText("Are you sure?", "Upgrade Excavator\nCopper -100").ShowButton("no", () =>
+                              uMyGUI_PopupButtons p = ((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("popup")).SetText("Are you sure?", "Upgrade Excavator\nCopper -300").ShowButton("no", () =>
                               {
                                   GameManager.Instance.FreezPlayer(false);
                                   GameManager.Instance.Unpause();
                               });
-                              if(GameManager.Instance.Copper >= 100)
+                              if(GameManager.Instance.Copper >= 300)
                               {
                                   p.ShowButton("yes", () =>
                                    {
-                                       GameManager.Instance.RemoveCopper(100);
+                                       GameManager.Instance.RemoveCopper(300);
                                        GameManager.Instance.UpgradeExcavator(0);
                                        GameManager.Instance.UpgradeExcavator(1);
-                                       NotificationText.Instance.AddNotification("Remove 100 Copper");
+                                       NotificationText.Instance.AddNotification("Remove 300 Copper");
                                        NotificationText.Instance.AddNotification("Excavator Upgraded!!!");
                                        GameManager.Instance.FreezPlayer(false);
                                        GameManager.Instance.Unpause();
@@ -215,9 +216,9 @@ public class PlayerRaycast : MonoBehaviour
                     int c = GameManager.Instance.Copper;
                     int s = GameManager.Instance.Silver;
                     int g = GameManager.Instance.Gold;
-                    if (c >= 50 && s >= 20 && g >= 10)
+                    if (c >= 100 && s >= 20 && g >= 10)
                     {
-                        int pc = 50;
+                        int pc = 100;
                         int ps = 20;
                         int pg = 10;
                         if (!InventoryManager.Instance.HasItem(0))
@@ -268,15 +269,15 @@ public class PlayerRaycast : MonoBehaviour
                             });
                         }
                     }
-                    if (s >= 200 * GameManager.Instance.gun.level)
+                    if (s >= 50 * GameManager.Instance.gun.level)
                     {
                         popup.ShowButton("gun", () =>
                         {
-                            ((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("popup")).SetText("Are you sure?", "Silver -200").ShowButton("yes", () =>
+                            ((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("popup")).SetText("Are you sure?", "Silver -50").ShowButton("yes", () =>
                             {
-                                GameManager.Instance.RemoveSilver(200);
+                                GameManager.Instance.RemoveSilver(50);
                                 GameManager.Instance.UpgradeWeapon();
-                                NotificationText.Instance.AddNotification("Remove 200 Silver");
+                                NotificationText.Instance.AddNotification("Remove 50 Silver");
                                 NotificationText.Instance.AddNotification("Weapon Upgraded!!!");
                                 GameManager.Instance.FreezPlayer(false);
                                 GameManager.Instance.Unpause();
@@ -288,15 +289,15 @@ public class PlayerRaycast : MonoBehaviour
                         });
                     }
                     // control chip
-                    if (g >= 40 && !InventoryManager.Instance.HasItem(6))
+                    if (g >= 20 && !InventoryManager.Instance.HasItem(6))
                     {
                         popup.ShowButton("controlchip1", () =>
                         {
-                            ((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("popup")).SetText("Are you sure?", "Gold -40").ShowButton("yes", () =>
+                            ((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("popup")).SetText("Are you sure?", "Gold -20").ShowButton("yes", () =>
                             {
-                                GameManager.Instance.RemoveGold(40);
+                                GameManager.Instance.RemoveGold(20);
                                 InventoryManager.Instance.AddItem(6);
-                                NotificationText.Instance.AddNotification("Remove 40 Gold");
+                                NotificationText.Instance.AddNotification("Remove 20 Gold");
                                 NotificationText.Instance.AddNotification("<Control Chip Part 1> added!!");
                                 GameManager.Instance.FreezPlayer(false);
                                 GameManager.Instance.Unpause();
@@ -307,15 +308,15 @@ public class PlayerRaycast : MonoBehaviour
                             });
                         });
                     }
-                    if (g >= 100 && !InventoryManager.Instance.HasItem(7))
+                    if (g >= 30 && !InventoryManager.Instance.HasItem(7))
                     {
                         popup.ShowButton("controlchip2", () =>
                         {
-                            ((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("popup")).SetText("Are you sure?", "Gold -100").ShowButton("yes", () =>
+                            ((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("popup")).SetText("Are you sure?", "Gold -30").ShowButton("yes", () =>
                         {
-                            GameManager.Instance.RemoveGold(100);
+                            GameManager.Instance.RemoveGold(30);
                             InventoryManager.Instance.AddItem(7);
-                            NotificationText.Instance.AddNotification("Remove 100 Gold");
+                            NotificationText.Instance.AddNotification("Remove 30 Gold");
                             NotificationText.Instance.AddNotification("<Control Chip Part 2> added!!");
                             GameManager.Instance.FreezPlayer(false);
                             GameManager.Instance.Unpause();
@@ -326,15 +327,15 @@ public class PlayerRaycast : MonoBehaviour
                         });
                         });
                     }
-                    if (g >= 200 && !InventoryManager.Instance.HasItem(8))
+                    if (g >= 40 && !InventoryManager.Instance.HasItem(8))
                     {
                         popup.ShowButton("controlchip3", () =>
                         {
-                            ((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("popup")).SetText("Are you sure?", "Gold -200").ShowButton("yes", () =>
+                            ((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("popup")).SetText("Are you sure?", "Gold -40").ShowButton("yes", () =>
                         {
-                            GameManager.Instance.RemoveGold(200);
+                            GameManager.Instance.RemoveGold(40);
                             InventoryManager.Instance.AddItem(8);
-                            NotificationText.Instance.AddNotification("Remove 200 Gold");
+                            NotificationText.Instance.AddNotification("Remove 40 Gold");
                             NotificationText.Instance.AddNotification("<Control Chip Part 3> added!!");
                             GameManager.Instance.FreezPlayer(false);
                             GameManager.Instance.Unpause();
@@ -346,15 +347,15 @@ public class PlayerRaycast : MonoBehaviour
                         });
                     }
                     // navigator
-                    if (g >= 40 && !InventoryManager.Instance.HasItem(9))
+                    if (g >= 20 && !InventoryManager.Instance.HasItem(9))
                     {
                         popup.ShowButton("navigator1", () =>
                         {
-                            ((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("popup")).SetText("Are you sure?", "Gold -40").ShowButton("yes", () =>
+                            ((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("popup")).SetText("Are you sure?", "Gold -20").ShowButton("yes", () =>
                         {
-                            GameManager.Instance.RemoveGold(40);
+                            GameManager.Instance.RemoveGold(20);
                             InventoryManager.Instance.AddItem(9);
-                            NotificationText.Instance.AddNotification("Remove 40 Gold");
+                            NotificationText.Instance.AddNotification("Remove 20 Gold");
                             NotificationText.Instance.AddNotification("<Navigator Part 1> added!!");
                             GameManager.Instance.FreezPlayer(false);
                             GameManager.Instance.Unpause();
@@ -365,15 +366,15 @@ public class PlayerRaycast : MonoBehaviour
                         });
                         });
                     }
-                    if (g >= 100 && !InventoryManager.Instance.HasItem(10))
+                    if (g >= 30 && !InventoryManager.Instance.HasItem(10))
                     {
                         popup.ShowButton("navigator2", () =>
                         {
-                            ((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("popup")).SetText("Are you sure?", "Gold -100").ShowButton("yes", () =>
+                            ((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("popup")).SetText("Are you sure?", "Gold -30").ShowButton("yes", () =>
                         {
-                            GameManager.Instance.RemoveGold(100);
+                            GameManager.Instance.RemoveGold(30);
                             InventoryManager.Instance.AddItem(10);
-                            NotificationText.Instance.AddNotification("Remove 100 Gold");
+                            NotificationText.Instance.AddNotification("Remove 30 Gold");
                             NotificationText.Instance.AddNotification("<Navigator Part 2> added!!");
                             GameManager.Instance.FreezPlayer(false);
                             GameManager.Instance.Unpause();
@@ -384,15 +385,15 @@ public class PlayerRaycast : MonoBehaviour
                         });
                         });
                     }
-                    if (g >= 200 && !InventoryManager.Instance.HasItem(11))
+                    if (g >= 40 && !InventoryManager.Instance.HasItem(11))
                     {
                         popup.ShowButton("navigator3", () =>
                         {
-                            ((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("popup")).SetText("Are you sure?", "Gold -200").ShowButton("yes", () =>
+                            ((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("popup")).SetText("Are you sure?", "Gold -40").ShowButton("yes", () =>
                         {
-                            GameManager.Instance.RemoveGold(200);
+                            GameManager.Instance.RemoveGold(40);
                             InventoryManager.Instance.AddItem(11);
-                            NotificationText.Instance.AddNotification("Remove 200 Gold");
+                            NotificationText.Instance.AddNotification("Remove 40 Gold");
                             NotificationText.Instance.AddNotification("<Navigator Part 3> added!!");
                             GameManager.Instance.FreezPlayer(false);
                             GameManager.Instance.Unpause();
@@ -404,15 +405,15 @@ public class PlayerRaycast : MonoBehaviour
                         });
                     }
                     // engines
-                    if (g >= 40 && !InventoryManager.Instance.HasItem(12))
+                    if (g >= 20 && !InventoryManager.Instance.HasItem(12))
                     {
                         popup.ShowButton("engine1", () =>
                         {
-                            ((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("popup")).SetText("Are you sure?", "Gold -40").ShowButton("yes", () =>
+                            ((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("popup")).SetText("Are you sure?", "Gold -20").ShowButton("yes", () =>
                         {
-                            GameManager.Instance.RemoveGold(40);
+                            GameManager.Instance.RemoveGold(20);
                             InventoryManager.Instance.AddItem(12);
-                            NotificationText.Instance.AddNotification("Remove 40 Gold");
+                            NotificationText.Instance.AddNotification("Remove 20 Gold");
                             NotificationText.Instance.AddNotification("<Engine Part 1> added!!");
                             GameManager.Instance.FreezPlayer(false);
                             GameManager.Instance.Unpause();
@@ -423,15 +424,15 @@ public class PlayerRaycast : MonoBehaviour
                         });
                         });
                     }
-                    if (g >= 100 && !InventoryManager.Instance.HasItem(13))
+                    if (g >= 30 && !InventoryManager.Instance.HasItem(13))
                     {
                         popup.ShowButton("engine2", () =>
                         {
-                            ((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("popup")).SetText("Are you sure?", "Gold -100").ShowButton("yes", () =>
+                            ((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("popup")).SetText("Are you sure?", "Gold -30").ShowButton("yes", () =>
                         {
-                            GameManager.Instance.RemoveGold(100);
+                            GameManager.Instance.RemoveGold(30);
                             InventoryManager.Instance.AddItem(13);
-                            NotificationText.Instance.AddNotification("Remove 100 Gold");
+                            NotificationText.Instance.AddNotification("Remove 30 Gold");
                             NotificationText.Instance.AddNotification("<Engine Part 2> added!!");
                             GameManager.Instance.FreezPlayer(false);
                             GameManager.Instance.Unpause();
@@ -442,15 +443,15 @@ public class PlayerRaycast : MonoBehaviour
                         });
                         });
                     }
-                    if (g >= 200 && !InventoryManager.Instance.HasItem(14))
+                    if (g >= 40 && !InventoryManager.Instance.HasItem(14))
                     {
                         popup.ShowButton("engine3", () =>
                         {
-                            ((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("popup")).SetText("Are you sure?", "Gold -200").ShowButton("yes", () =>
+                            ((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("popup")).SetText("Are you sure?", "Gold -40").ShowButton("yes", () =>
                         {
-                            GameManager.Instance.RemoveGold(200);
+                            GameManager.Instance.RemoveGold(40);
                             InventoryManager.Instance.AddItem(14);
-                            NotificationText.Instance.AddNotification("Remove 200 Gold");
+                            NotificationText.Instance.AddNotification("Remove 40 Gold");
                             NotificationText.Instance.AddNotification("<Engine Part 3> added!!");
                             GameManager.Instance.FreezPlayer(false);
                             GameManager.Instance.Unpause();
@@ -462,15 +463,15 @@ public class PlayerRaycast : MonoBehaviour
                         });
                     }
                     // fuel
-                    if (g >= 40 && !InventoryManager.Instance.HasItem(15))
+                    if (g >= 20 && !InventoryManager.Instance.HasItem(15))
                     {
                         popup.ShowButton("fuel1", () =>
                         {
-                            ((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("popup")).SetText("Are you sure?", "Gold -40").ShowButton("yes", () =>
+                            ((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("popup")).SetText("Are you sure?", "Gold -20").ShowButton("yes", () =>
                         {
-                            GameManager.Instance.RemoveGold(40);
+                            GameManager.Instance.RemoveGold(20);
                             InventoryManager.Instance.AddItem(15);
-                            NotificationText.Instance.AddNotification("Remove 40 Gold");
+                            NotificationText.Instance.AddNotification("Remove 20 Gold");
                             NotificationText.Instance.AddNotification("<Fuel Ingredient 1> added!!");
                             GameManager.Instance.FreezPlayer(false);
                             GameManager.Instance.Unpause();
@@ -481,15 +482,15 @@ public class PlayerRaycast : MonoBehaviour
                         });
                         });
                     }
-                    if (g >= 100 && !InventoryManager.Instance.HasItem(16))
+                    if (g >= 30 && !InventoryManager.Instance.HasItem(16))
                     {
                         popup.ShowButton("fuel2", () =>
                         {
-                            ((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("popup")).SetText("Are you sure?", "Gold -100").ShowButton("yes", () =>
+                            ((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("popup")).SetText("Are you sure?", "Gold -30").ShowButton("yes", () =>
                         {
-                            GameManager.Instance.RemoveGold(100);
+                            GameManager.Instance.RemoveGold(30);
                             InventoryManager.Instance.AddItem(16);
-                            NotificationText.Instance.AddNotification("Remove 100 Gold");
+                            NotificationText.Instance.AddNotification("Remove 30 Gold");
                             NotificationText.Instance.AddNotification("<Fuel Ingredient 2> added!!");
                             GameManager.Instance.FreezPlayer(false);
                             GameManager.Instance.Unpause();
@@ -500,15 +501,15 @@ public class PlayerRaycast : MonoBehaviour
                         });
                         });
                     }
-                    if (g >= 200 && !InventoryManager.Instance.HasItem(17))
+                    if (g >= 40 && !InventoryManager.Instance.HasItem(17))
                     {
                         popup.ShowButton("fuel3", () =>
                         {
-                            ((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("popup")).SetText("Are you sure?", "Gold -200").ShowButton("yes", () =>
+                            ((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("popup")).SetText("Are you sure?", "Gold -40").ShowButton("yes", () =>
                         {
-                            GameManager.Instance.RemoveGold(200);
+                            GameManager.Instance.RemoveGold(40);
                             InventoryManager.Instance.AddItem(17);
-                            NotificationText.Instance.AddNotification("Remove 200 Gold");
+                            NotificationText.Instance.AddNotification("Remove 40 Gold");
                             NotificationText.Instance.AddNotification("<Fuel Ingredient 3> added!!");
                             GameManager.Instance.FreezPlayer(false);
                             GameManager.Instance.Unpause();
@@ -627,7 +628,7 @@ public class PlayerRaycast : MonoBehaviour
                             GameManager.Instance.Unpause();
                         }).ShowButton("gold", () =>
                         {
-                            GameManager.Instance.StartExcavator(1, 0, 0, 10);
+                            GameManager.Instance.StartExcavator(1, 0, 0, 30);
                             ExcavatorControl.Instance.ExcavatorOn(1);
                             GameManager.Instance.FreezPlayer(false);
                             GameManager.Instance.Unpause();
@@ -699,7 +700,16 @@ public class PlayerRaycast : MonoBehaviour
 
                     ((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("rocket")).SetText("Rocket", "<ยานพัง มีอะไหล่ บางส่วนหายไป>").ShowButton("end", () =>
                     {
-                        NotificationText.Instance.AddNotification("Cant");
+                        if (InventoryManager.Instance.End)
+                        {
+                            NotificationText.Instance.AddNotification("ขอบคุณครับ");
+                            StartCoroutine(EndGame());
+                        }
+                        else
+                        {
+                            NotificationText.Instance.AddNotification("จะต้องซ่อมยานก่อน");
+                        }
+                        
                         GameManager.Instance.FreezPlayer(false);
                         GameManager.Instance.Unpause();
                     }).ShowButton("fix", () =>
@@ -748,5 +758,11 @@ public class PlayerRaycast : MonoBehaviour
     void hideAllUI()
     {
         HandPanel.SetActive(false);
+    }
+
+    IEnumerator EndGame()
+    {
+        yield return new WaitForSecondsRealtime(5);
+        SceneManager.LoadScene(0);
     }
 }

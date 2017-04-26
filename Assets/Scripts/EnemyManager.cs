@@ -48,7 +48,7 @@ public class EnemyManager : MonoBehaviour {
 
     public void AddEnemy()
     {
-        AddEnemy(Random.Range(0, 1) == 0 ? 0 : 1);
+        AddEnemy(Random.Range(0, 2) == 0 ? 0 : 1);
     }
 
     Transform[] GetPatrolPoint(int index)

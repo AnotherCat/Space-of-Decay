@@ -44,7 +44,7 @@ public class PlayerShoot : MonoBehaviour {
                     if (Random.Range(0, 2) == 1)
                     {
                         int silver = Random.Range(10, 20);
-                        GameManager.Instance.AddGold(silver);
+                        GameManager.Instance.AddSilver(silver);
                         NotificationText.Instance.AddNotification(silver + " Silver Added !!");
                     }
                     if (Random.Range(0, 2) == 1)
