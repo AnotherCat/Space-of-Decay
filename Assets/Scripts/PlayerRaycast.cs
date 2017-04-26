@@ -68,7 +68,7 @@ public class PlayerRaycast : MonoBehaviour
                     {
                         GameManager.Instance.FreezPlayer(true);
                         GameManager.Instance.Pause();
-                        ((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("computer")).SetText("Computer", "<ข้อความระบุว่า หาทางออกไปจากที่นี้>\n<รีบไปที่ยานอวกาศ!!>").ShowButton("close", () =>
+                        ((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("computer")).SetText("Computer", "<ข้อความระบุว่า>\n \nบททดสอบพิเศษ \nเพื่อเตรียมพร้อมสู่การเป็นนัก STEM \nภารกิจ หาทางออกไปจากที่นี้\n \n< ตามคำใบ้ไป!! >").ShowButton("close", () =>
                         {
                             DoorsControl.Instance.locked[0] = false;
                             //DoorsControl.Instance.locked[1] = false;
@@ -84,7 +84,7 @@ public class PlayerRaycast : MonoBehaviour
                     {
                         GameManager.Instance.FreezPlayer(true);
                         GameManager.Instance.Pause();
-                        ((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("craft1")).SetText("Computer1", "<craft calculate and upgrade excavator>").ShowButton("craft", () =>
+                        ((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("craft1")).SetText("Computer1", "<สร้างอะไหล่สำหรับยาน> \nหรือ \n<จะอัพเกรดเพื่อแร่ที่มากขึ้น >").ShowButton("craft", () =>
                           {
                              // craft control chip
                              // craft navigator
@@ -110,7 +110,7 @@ public class PlayerRaycast : MonoBehaviour
 
                           }).ShowButton("excavator", () =>
                           {
-                              uMyGUI_PopupButtons p = ((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("popup")).SetText("Are you sure?", "Upgrade Excavator\nCopper -300").ShowButton("no", () =>
+                              uMyGUI_PopupButtons p = ((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("popup")).SetText("Are you sure?", "Upgrade Excavator\n300 Copper").ShowButton("no", () =>
                               {
                                   GameManager.Instance.FreezPlayer(false);
                                   GameManager.Instance.Unpause();
@@ -144,7 +144,7 @@ public class PlayerRaycast : MonoBehaviour
                     GameManager.Instance.FreezPlayer(true);
                     GameManager.Instance.Pause();
                     
-                    ((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("craft1")).SetText("computer2", "<craft physics and weapon>").ShowButton("craft", () =>
+                    ((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("craft1")).SetText("computer2", "<สร้างชิ้นส่วนสำหรับทำอะไหล่> \nหรือ \n<จะสร้างปืนใหม่>").ShowButton("craft", () =>
                      {
                         // craft control chip
                         // craft navigator
@@ -170,7 +170,7 @@ public class PlayerRaycast : MonoBehaviour
 
                      }).ShowButton("weapon", () =>
                      {
-                         uMyGUI_PopupButtons p = ((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("popup")).SetText("Are you sure?", "Upgrade Weapon\nSilver -100").ShowButton("no", () =>
+                         uMyGUI_PopupButtons p = ((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("popup")).SetText("Are you sure?", "Upgrade Weapon\n100 Silver").ShowButton("no", () =>
                          {
                              GameManager.Instance.FreezPlayer(false);
                              GameManager.Instance.Unpause();
@@ -273,7 +273,7 @@ public class PlayerRaycast : MonoBehaviour
                     {
                         popup.ShowButton("gun", () =>
                         {
-                            ((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("popup")).SetText("Are you sure?", "Silver -50").ShowButton("yes", () =>
+                            ((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("popup")).SetText("Are you sure?", "50 Silver").ShowButton("yes", () =>
                             {
                                 GameManager.Instance.RemoveSilver(50);
                                 GameManager.Instance.UpgradeWeapon();
@@ -293,7 +293,7 @@ public class PlayerRaycast : MonoBehaviour
                     {
                         popup.ShowButton("controlchip1", () =>
                         {
-                            ((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("popup")).SetText("Are you sure?", "Gold -20").ShowButton("yes", () =>
+                            ((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("popup")).SetText("Are you sure?", "Chipset ทำหน้าที่ \"เชื่อมประสานเทคโนโลยีเข้าด้วยกัน\"\n20 Gold").ShowButton("yes", () =>
                             {
                                 GameManager.Instance.RemoveGold(20);
                                 InventoryManager.Instance.AddItem(6);
@@ -312,7 +312,7 @@ public class PlayerRaycast : MonoBehaviour
                     {
                         popup.ShowButton("controlchip2", () =>
                         {
-                            ((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("popup")).SetText("Are you sure?", "Gold -30").ShowButton("yes", () =>
+                            ((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("popup")).SetText("Are you sure?", "Chipset มีหน้าที่ ควบคุมการทำงานต่างๆบนแผงวงจรหลัก\n30 Gold ").ShowButton("yes", () =>
                         {
                             GameManager.Instance.RemoveGold(30);
                             InventoryManager.Instance.AddItem(7);
@@ -331,7 +331,7 @@ public class PlayerRaycast : MonoBehaviour
                     {
                         popup.ShowButton("controlchip3", () =>
                         {
-                            ((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("popup")).SetText("Are you sure?", "Gold -40").ShowButton("yes", () =>
+                            ((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("popup")).SetText("Are you sure?", "Chipset มีหน้าที่ ควบคุมการทำงานต่างๆบนแผงวงจรหลัก\n40 Gold").ShowButton("yes", () =>
                         {
                             GameManager.Instance.RemoveGold(40);
                             InventoryManager.Instance.AddItem(8);
@@ -351,7 +351,7 @@ public class PlayerRaycast : MonoBehaviour
                     {
                         popup.ShowButton("navigator1", () =>
                         {
-                            ((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("popup")).SetText("Are you sure?", "Gold -20").ShowButton("yes", () =>
+                            ((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("popup")).SetText("Are you sure?", "ระบบนำทาง เพื่อกำหนดจุดตำแหน่ง ที่ยานอวกาศจะเดินทางไป\n20 Gold").ShowButton("yes", () =>
                         {
                             GameManager.Instance.RemoveGold(20);
                             InventoryManager.Instance.AddItem(9);
@@ -370,7 +370,7 @@ public class PlayerRaycast : MonoBehaviour
                     {
                         popup.ShowButton("navigator2", () =>
                         {
-                            ((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("popup")).SetText("Are you sure?", "Gold -30").ShowButton("yes", () =>
+                            ((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("popup")).SetText("Are you sure?", "ระบบนำทางเป็นระบบย่อยอันนึงของยานอวกาศ\n30 Gold").ShowButton("yes", () =>
                         {
                             GameManager.Instance.RemoveGold(30);
                             InventoryManager.Instance.AddItem(10);
@@ -389,7 +389,7 @@ public class PlayerRaycast : MonoBehaviour
                     {
                         popup.ShowButton("navigator3", () =>
                         {
-                            ((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("popup")).SetText("Are you sure?", "Gold -40").ShowButton("yes", () =>
+                            ((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("popup")).SetText("Are you sure?", "ระบบนำทาง เพื่อกำหนดจุดตำแหน่ง ที่ยานอวกาศจะเดินทางไป\n40 Gold").ShowButton("yes", () =>
                         {
                             GameManager.Instance.RemoveGold(40);
                             InventoryManager.Instance.AddItem(11);
@@ -409,7 +409,7 @@ public class PlayerRaycast : MonoBehaviour
                     {
                         popup.ShowButton("engine1", () =>
                         {
-                            ((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("popup")).SetText("Are you sure?", "Gold -20").ShowButton("yes", () =>
+                            ((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("popup")).SetText("Are you sure?", "เครื่องยนต์ คือ อุปกรณ์ที่ใช้สำหรับเปลี่ยนพลังงานความร้อนให้เป็นพลังงานกล\n20 Gold").ShowButton("yes", () =>
                         {
                             GameManager.Instance.RemoveGold(20);
                             InventoryManager.Instance.AddItem(12);
@@ -428,7 +428,7 @@ public class PlayerRaycast : MonoBehaviour
                     {
                         popup.ShowButton("engine2", () =>
                         {
-                            ((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("popup")).SetText("Are you sure?", "Gold -30").ShowButton("yes", () =>
+                            ((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("popup")).SetText("Are you sure?", "เครื่องยนต์จรวด ใช้มวลเชื้อเพลิงจรวดที่ถูกเก็บไว้โดยเฉพาะสำหรับการสร้างแรงขับดันไอพ่น \n30 Gold").ShowButton("yes", () =>
                         {
                             GameManager.Instance.RemoveGold(30);
                             InventoryManager.Instance.AddItem(13);
@@ -447,7 +447,7 @@ public class PlayerRaycast : MonoBehaviour
                     {
                         popup.ShowButton("engine3", () =>
                         {
-                            ((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("popup")).SetText("Are you sure?", "Gold -40").ShowButton("yes", () =>
+                            ((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("popup")).SetText("Are you sure?", "เครื่องยนต์จรวด\nสร้างแรงขับดันโดยการเผาไหม้เชื้อเพลิงเหลวให้กลายเป็นของไหล\n40 Gold").ShowButton("yes", () =>
                         {
                             GameManager.Instance.RemoveGold(40);
                             InventoryManager.Instance.AddItem(14);
@@ -467,7 +467,7 @@ public class PlayerRaycast : MonoBehaviour
                     {
                         popup.ShowButton("fuel1", () =>
                         {
-                            ((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("popup")).SetText("Are you sure?", "Gold -20").ShowButton("yes", () =>
+                            ((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("popup")).SetText("Are you sure?", "เชื้อเพลิงไฮโดรเจน ใช้สำหรับยานอวกาศ\n20 Gold").ShowButton("yes", () =>
                         {
                             GameManager.Instance.RemoveGold(20);
                             InventoryManager.Instance.AddItem(15);
@@ -486,7 +486,7 @@ public class PlayerRaycast : MonoBehaviour
                     {
                         popup.ShowButton("fuel2", () =>
                         {
-                            ((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("popup")).SetText("Are you sure?", "Gold -30").ShowButton("yes", () =>
+                            ((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("popup")).SetText("Are you sure?", "เชื้อเพลิงไฮโดรเจน มีความปลอดภัยเท่ากับรถยนต์ที่ใช้น้ำมันปกติ\n30 Gold").ShowButton("yes", () =>
                         {
                             GameManager.Instance.RemoveGold(30);
                             InventoryManager.Instance.AddItem(16);
@@ -505,7 +505,7 @@ public class PlayerRaycast : MonoBehaviour
                     {
                         popup.ShowButton("fuel3", () =>
                         {
-                            ((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("popup")).SetText("Are you sure?", "Gold -40").ShowButton("yes", () =>
+                            ((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("popup")).SetText("Are you sure?", "เชื้อเพลิงสำรับยานอวกาศ คือเชื้อเพลิงไฮโดรเจน \n40 Gold").ShowButton("yes", () =>
                         {
                             GameManager.Instance.RemoveGold(40);
                             InventoryManager.Instance.AddItem(17);
