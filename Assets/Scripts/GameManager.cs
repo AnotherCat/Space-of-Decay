@@ -10,7 +10,7 @@ using UnityStandardAssets.Characters.FirstPerson;
 public class Excavator
 {
     public int level = 1;
-    public int time = 60;
+    public int time = 20;
     public int tick = 0;
     public bool startedFlag = false;
     public bool finishedFlag = false;
@@ -24,7 +24,7 @@ public class Excavator
     public void reset()
     {
         level = 1;
-        time = 60;
+        time = 20;
         tick = 0;
         startedFlag = false;
         finishedFlag = false;

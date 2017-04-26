@@ -17670,7 +17670,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 100 copper/min
+  m_Text: 200 copper
 --- !u!222 &945747805
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -20533,7 +20533,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 30 gold/min
+  m_Text: 100 gold/min
 --- !u!222 &1094199206
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -34893,7 +34893,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 60 silver/min
+  m_Text: 150 silver/min
 --- !u!222 &1917252795
 CanvasRenderer:
   m_ObjectHideFlags: 0
