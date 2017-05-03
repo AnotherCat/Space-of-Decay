@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: d38d09145d3270d45b74b51823fc1aad
+timeCreated: 1493787683
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: CS PraKasFD
+  fontNames:
+  - CS PraKasFD
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

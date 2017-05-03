@@ -105,8 +105,6 @@ public class GameManager : MonoBehaviour {
     {
         GunLevelText.text = "Weapon Level : " + gun.level;
         UIFloatManager.Instance.ShowUI(0);
-        NotificationText.Instance.AddNotification("กด W A S D เดินไปรอบๆ",10);
-        NotificationText.Instance.AddNotification("กด E ปฏิสัมพันกับวัตถุ",10);
     }
     public void NewGame()
     {

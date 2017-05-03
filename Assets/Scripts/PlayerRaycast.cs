@@ -704,6 +704,7 @@ public class PlayerRaycast : MonoBehaviour
                         {
                             NotificationText.Instance.AddNotification("ขอบคุณครับ");
                             StartCoroutine(EndGame());
+                            
                         }
                         else
                         {
@@ -763,6 +764,8 @@ public class PlayerRaycast : MonoBehaviour
     IEnumerator EndGame()
     {
         yield return new WaitForSecondsRealtime(5);
+        GameManager.Instance.FreezPlayer(false);
+        GameManager.Instance.Unpause();
         SceneManager.LoadScene(0);
     }
 }
