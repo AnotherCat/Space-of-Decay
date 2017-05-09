@@ -76,7 +76,10 @@ public class GameManager : MonoBehaviour {
     public int Copper = 0;
     public int Silver = 0;
     public int Gold = 0;
-    
+
+    //SFX
+    public GameObject[] sfx;
+
     // Use this for initialization
     void Start () {
         NewGame();

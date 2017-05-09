@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class EnemyManager : MonoBehaviour {
     Animator anim;
 
+
     private static EnemyManager s_instance = null;
     public static EnemyManager Instance
     {

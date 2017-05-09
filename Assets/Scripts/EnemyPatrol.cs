@@ -6,7 +6,8 @@ using UnityEngine.AI;
 public class EnemyPatrol : MonoBehaviour {
 
     public Transform[] points;
-    
+    public GameObject sfx;
+
     private NavMeshAgent agent;
     private int destPoint = 0;
     
@@ -57,6 +58,7 @@ public class EnemyPatrol : MonoBehaviour {
                     NotificationText.Instance.AddNotification("Lost " + GameManager.Instance.Gold / 2 + " Gold!!");
                     GameManager.Instance.RemoveGold(GameManager.Instance.Gold / 2);
                 }
+                GameManager.Instance.sfx[0].GetComponent<Animator>().SetTrigger("blood");
                 EnemyManager.Instance.OnEnemyDie();
                 Destroy(gameObject);
             }
