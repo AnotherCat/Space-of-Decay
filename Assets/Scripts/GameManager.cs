@@ -152,6 +152,7 @@ public class GameManager : MonoBehaviour {
         ext[index].SilverPerMin = silver;
         ext[index].GoldPerMin = gold;
         ext[index].startedFlag = true;
+        
         StartCoroutine(ExcavatorProcess(index));
     }
     public void RestartExcavator(int index)

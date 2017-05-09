@@ -17,7 +17,8 @@ public class ExcavatorControl : MonoBehaviour {
 
     public Animator[] ExcavatorAnimators;
     public AudioSource[] Sounds;
-    
+    public GameObject[] ExcavatorSFX;
+
     // Use this for initialization
     void Start () {
 
@@ -32,11 +33,13 @@ public class ExcavatorControl : MonoBehaviour {
     {
         ExcavatorAnimators[index].SetTrigger("on");
         Sounds[index].Play();
+        ExcavatorSFX[index].SetActive(true);
     }
 
     public void ExcavatorOff(int index)
     {
         ExcavatorAnimators[index].SetTrigger("off");
         Sounds[index].Stop();
+        ExcavatorSFX[index].SetActive(false);
     }
 }
