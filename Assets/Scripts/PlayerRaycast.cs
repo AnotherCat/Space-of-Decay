@@ -40,7 +40,7 @@ public class PlayerRaycast : MonoBehaviour
                     }
                     else
                     {
-                        NotificationText.Instance.AddNotification("Need <Red Keycard>");
+                        NotificationText.Instance.AddNotification("Need Red Keycard");
                     }
                 }
             }
@@ -55,7 +55,7 @@ public class PlayerRaycast : MonoBehaviour
                     }
                     else
                     {
-                        NotificationText.Instance.AddNotification("Need <Green Keycard>");
+                        NotificationText.Instance.AddNotification("Need Green Keycard");
                     }
                 }
             }
@@ -68,7 +68,7 @@ public class PlayerRaycast : MonoBehaviour
                     {
                         GameManager.Instance.FreezPlayer(true);
                         GameManager.Instance.Pause();
-                        ((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("computer")).SetText("Computer", "<ข้อความระบุว่า>\n \nบททดสอบพิเศษ \nเพื่อเตรียมพร้อมสู่การเป็นนัก STEM \nภารกิจ หาทางออกไปจากที่นี้\n \n< ตามคำใบ้ไป!! >").ShowButton("close", () =>
+                        ((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("computer")).SetText("Computer", "<ข้อความระบุว่า> \nบททดสอบพิเศษ \nเพื่อเตรียมพร้อมสู่การเป็นนัก STEM \nภารกิจ หาทางออกไปจากที่นี้\n < ตามคำใบ้ไป!! >").ShowButton("close", () =>
                         {
                             DoorsControl.Instance.locked[0] = false;
                             //DoorsControl.Instance.locked[1] = false;
@@ -84,7 +84,7 @@ public class PlayerRaycast : MonoBehaviour
                     {
                         GameManager.Instance.FreezPlayer(true);
                         GameManager.Instance.Pause();
-                        ((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("craft1")).SetText("Computer1", "<สร้างอะไหล่สำหรับยาน> \nหรือ \n<จะอัพเกรดเพื่อแร่ที่มากขึ้น >").ShowButton("craft", () =>
+                        ((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("craft1")).SetText("Computer1", "สร้างอะไหล่สำหรับยาน \nหรือ \nจะอัพเกรดเพื่อแร่ที่มากขึ้น ").ShowButton("craft", () =>
                           {
                              // craft control chip
                              // craft navigator
@@ -144,7 +144,7 @@ public class PlayerRaycast : MonoBehaviour
                     GameManager.Instance.FreezPlayer(true);
                     GameManager.Instance.Pause();
                     
-                    ((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("craft1")).SetText("computer2", "<สร้างชิ้นส่วนสำหรับทำอะไหล่> \nหรือ \n<จะสร้างปืนใหม่>").ShowButton("craft", () =>
+                    ((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("craft1")).SetText("computer2", "สร้างชิ้นส่วนสำหรับทำอะไหล่ \nหรือ \nจะอัพเกรดปืน").ShowButton("craft", () =>
                      {
                         // craft control chip
                         // craft navigator
@@ -298,7 +298,7 @@ public class PlayerRaycast : MonoBehaviour
                                 GameManager.Instance.RemoveGold(20);
                                 InventoryManager.Instance.AddItem(6);
                                 NotificationText.Instance.AddNotification("Remove 20 Gold");
-                                NotificationText.Instance.AddNotification("<Control Chip Part 1> added!!");
+                                NotificationText.Instance.AddNotification("CPU added!!");
                                 GameManager.Instance.FreezPlayer(false);
                                 GameManager.Instance.Unpause();
                             }).ShowButton("no", () =>
@@ -317,7 +317,7 @@ public class PlayerRaycast : MonoBehaviour
                             GameManager.Instance.RemoveGold(30);
                             InventoryManager.Instance.AddItem(7);
                             NotificationText.Instance.AddNotification("Remove 30 Gold");
-                            NotificationText.Instance.AddNotification("<Control Chip Part 2> added!!");
+                            NotificationText.Instance.AddNotification("ram added!!");
                             GameManager.Instance.FreezPlayer(false);
                             GameManager.Instance.Unpause();
                         }).ShowButton("no", () =>
@@ -336,7 +336,7 @@ public class PlayerRaycast : MonoBehaviour
                             GameManager.Instance.RemoveGold(40);
                             InventoryManager.Instance.AddItem(8);
                             NotificationText.Instance.AddNotification("Remove 40 Gold");
-                            NotificationText.Instance.AddNotification("<Control Chip Part 3> added!!");
+                            NotificationText.Instance.AddNotification("เมนบอร์ด added!!");
                             GameManager.Instance.FreezPlayer(false);
                             GameManager.Instance.Unpause();
                         }).ShowButton("no", () =>
@@ -356,7 +356,7 @@ public class PlayerRaycast : MonoBehaviour
                             GameManager.Instance.RemoveGold(20);
                             InventoryManager.Instance.AddItem(9);
                             NotificationText.Instance.AddNotification("Remove 20 Gold");
-                            NotificationText.Instance.AddNotification("<Navigator Part 1> added!!");
+                            NotificationText.Instance.AddNotification("ต่ำแหน่งดาวเทียม 1 added!!");
                             GameManager.Instance.FreezPlayer(false);
                             GameManager.Instance.Unpause();
                         }).ShowButton("no", () =>
@@ -375,7 +375,7 @@ public class PlayerRaycast : MonoBehaviour
                             GameManager.Instance.RemoveGold(30);
                             InventoryManager.Instance.AddItem(10);
                             NotificationText.Instance.AddNotification("Remove 30 Gold");
-                            NotificationText.Instance.AddNotification("<Navigator Part 2> added!!");
+                            NotificationText.Instance.AddNotification("ต่ำแหน่งดาวเทียม 2 added!!");
                             GameManager.Instance.FreezPlayer(false);
                             GameManager.Instance.Unpause();
                         }).ShowButton("no", () =>
@@ -394,7 +394,7 @@ public class PlayerRaycast : MonoBehaviour
                             GameManager.Instance.RemoveGold(40);
                             InventoryManager.Instance.AddItem(11);
                             NotificationText.Instance.AddNotification("Remove 40 Gold");
-                            NotificationText.Instance.AddNotification("<Navigator Part 3> added!!");
+                            NotificationText.Instance.AddNotification("ต่ำแหน่งดาวเทียม 3 added!!");
                             GameManager.Instance.FreezPlayer(false);
                             GameManager.Instance.Unpause();
                         }).ShowButton("no", () =>
@@ -414,7 +414,7 @@ public class PlayerRaycast : MonoBehaviour
                             GameManager.Instance.RemoveGold(20);
                             InventoryManager.Instance.AddItem(12);
                             NotificationText.Instance.AddNotification("Remove 20 Gold");
-                            NotificationText.Instance.AddNotification("<Engine Part 1> added!!");
+                            NotificationText.Instance.AddNotification("ฟิวส์ added!!");
                             GameManager.Instance.FreezPlayer(false);
                             GameManager.Instance.Unpause();
                         }).ShowButton("no", () =>
@@ -433,7 +433,7 @@ public class PlayerRaycast : MonoBehaviour
                             GameManager.Instance.RemoveGold(30);
                             InventoryManager.Instance.AddItem(13);
                             NotificationText.Instance.AddNotification("Remove 30 Gold");
-                            NotificationText.Instance.AddNotification("<Engine Part 2> added!!");
+                            NotificationText.Instance.AddNotification("แบตเตอรี่ added!!");
                             GameManager.Instance.FreezPlayer(false);
                             GameManager.Instance.Unpause();
                         }).ShowButton("no", () =>
@@ -452,7 +452,7 @@ public class PlayerRaycast : MonoBehaviour
                             GameManager.Instance.RemoveGold(40);
                             InventoryManager.Instance.AddItem(14);
                             NotificationText.Instance.AddNotification("Remove 40 Gold");
-                            NotificationText.Instance.AddNotification("<Engine Part 3> added!!");
+                            NotificationText.Instance.AddNotification("วาล์ว added!!");
                             GameManager.Instance.FreezPlayer(false);
                             GameManager.Instance.Unpause();
                         }).ShowButton("no", () =>
@@ -472,7 +472,7 @@ public class PlayerRaycast : MonoBehaviour
                             GameManager.Instance.RemoveGold(20);
                             InventoryManager.Instance.AddItem(15);
                             NotificationText.Instance.AddNotification("Remove 20 Gold");
-                            NotificationText.Instance.AddNotification("<Fuel Ingredient 1> added!!");
+                            NotificationText.Instance.AddNotification("ไฮโดรเจน added!!");
                             GameManager.Instance.FreezPlayer(false);
                             GameManager.Instance.Unpause();
                         }).ShowButton("no", () =>
@@ -491,7 +491,7 @@ public class PlayerRaycast : MonoBehaviour
                             GameManager.Instance.RemoveGold(30);
                             InventoryManager.Instance.AddItem(16);
                             NotificationText.Instance.AddNotification("Remove 30 Gold");
-                            NotificationText.Instance.AddNotification("<Fuel Ingredient 2> added!!");
+                            NotificationText.Instance.AddNotification("ไฮโดรเจน added!!");
                             GameManager.Instance.FreezPlayer(false);
                             GameManager.Instance.Unpause();
                         }).ShowButton("no", () =>
@@ -505,12 +505,12 @@ public class PlayerRaycast : MonoBehaviour
                     {
                         popup.ShowButton("fuel3", () =>
                         {
-                            ((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("popup")).SetText("Are you sure?", "น้ำ ใช้สำหรับสร้างเชื้อเพลิงยานอวกาศ\n40 Gold").ShowButton("yes", () =>
+                            ((uMyGUI_PopupText)uMyGUI_PopupManager.Instance.ShowPopup("popup")).SetText("Are you sure?", "ออกซิเจน ใช้สำหรับสร้างเชื้อเพลิงยานอวกาศ\n40 Gold").ShowButton("yes", () =>
                         {
                             GameManager.Instance.RemoveGold(40);
                             InventoryManager.Instance.AddItem(17);
                             NotificationText.Instance.AddNotification("Remove 40 Gold");
-                            NotificationText.Instance.AddNotification("<Fuel Ingredient 3> added!!");
+                            NotificationText.Instance.AddNotification("ออกซิเจน added!!");
                             GameManager.Instance.FreezPlayer(false);
                             GameManager.Instance.Unpause();
                         }).ShowButton("no", () =>
@@ -541,7 +541,7 @@ public class PlayerRaycast : MonoBehaviour
                             if (excavatorFirst)
                             {
                                 EnemyManager.Instance.AddEnemy(0);
-                                NotificationText.Instance.AddNotification("เอเลียนปรากฏ <เล็งที่เอเลียนเพื่อชาจอาวุธ>",10);
+                                NotificationText.Instance.AddNotification("เอเลี่ยนปรากฏ <เล็งที่เอเลียนเพื่อชาจอาวุธ>",10);
                                 excavatorFirst = false;
                                 UIFloatManager.Instance.HideUI();
                             }
@@ -554,7 +554,7 @@ public class PlayerRaycast : MonoBehaviour
                             if (excavatorFirst)
                             {
                                 EnemyManager.Instance.AddEnemy(0);
-                                NotificationText.Instance.AddNotification("เอเลียนปรากฏ <เล็งที่เอเลียนเพื่อชาตจอาวุธ>",10);
+                                NotificationText.Instance.AddNotification("เอเลี่ยนปรากฏ <เล็งที่เอเลียนเพื่อชาตจอาวุธ>",10);
                                 excavatorFirst = false;
                                 UIFloatManager.Instance.HideUI();
                             }
@@ -567,7 +567,7 @@ public class PlayerRaycast : MonoBehaviour
                             if (excavatorFirst)
                             {
                                 EnemyManager.Instance.AddEnemy(0);
-                                NotificationText.Instance.AddNotification("เอเลียนปรากฏ <เล็งที่เอเลียนเพื่อชาจอาวุธ>",10);
+                                NotificationText.Instance.AddNotification("เอเลี่ยนปรากฏ <เล็งที่เอเลียนเพื่อชาจอาวุธ>",10);
                                 excavatorFirst = false;
                                 UIFloatManager.Instance.HideUI();
                             }
@@ -729,21 +729,21 @@ public class PlayerRaycast : MonoBehaviour
             }
             else if (name.StartsWith("poster1"))
             {
-                GameManager.Instance.AddCopper(50);
+                GameManager.Instance.AddCopper(60);
                 hit.collider.gameObject.GetComponent<BoxCollider>().enabled = false;
-                NotificationText.Instance.AddNotification("ได้รับ ทองแดง 50");
+                NotificationText.Instance.AddNotification("ได้รับ ทองแดง 60");
             }
             else if (name.StartsWith("poster2"))
             {
-                GameManager.Instance.AddSilver(30);
+                GameManager.Instance.AddSilver(50);
                 hit.collider.gameObject.GetComponent<BoxCollider>().enabled = false;
-                NotificationText.Instance.AddNotification("ได้รับ แร่เงิน 30");
+                NotificationText.Instance.AddNotification("ได้รับ แร่เงิน 50");
             }
             else if (name.StartsWith("poster3"))
             {
-                GameManager.Instance.AddGold(5);
+                GameManager.Instance.AddGold(20);
                 hit.collider.gameObject.GetComponent<BoxCollider>().enabled = false;
-                NotificationText.Instance.AddNotification("ได้รับ แร่ทอง 5");
+                NotificationText.Instance.AddNotification("ได้รับ แร่ทอง 20");
             }
             else
             {
