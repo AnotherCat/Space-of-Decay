@@ -32,6 +32,7 @@ public class PlayerShoot : MonoBehaviour {
                 {
                     foo = 0;
                     s.clip = clips[Random.Range(1, clips.Length)];
+                    GameManager.Instance.sfx[1].GetComponent<Animator>().SetTrigger("shoot");
                     s.Play();
                     EnemyManager.Instance.OnEnemyDie();
                     Destroy(hit.collider.gameObject);
