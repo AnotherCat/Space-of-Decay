@@ -12,3 +12,6 @@ This project compatible to unity3d version 5.6.0f3 [Download](https://unity3d.co
 1. download zip file game [Download](https://github.com/feedallcat/Space-of-Decay/raw/master/Space-of-Decay.zip)
 2. unzip game
 3. launch EXE/Space-of-Decay.exe
+
+#### or
+1. play online by WebGL build [Space-of-Decay](https://feedallcat.github.io/Space-of-Decay-WebGL/)
