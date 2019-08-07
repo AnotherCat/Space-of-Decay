@@ -9,6 +9,6 @@ This project compatible to unity3d version 5.6.0f3 [Download](https://unity3d.co
 3. Click Play
 
 ### Play Game
-1. download zip file game [Download](https://github.com/feedallcat/Final-Term-Project/raw/master/Final-Term-Project.zip)
+1. download zip file game [Download](https://github.com/feedallcat/Space-of-Decay/raw/master/Space-of-Decay.zip)
 2. unzip game
 3. launch EXE/Space-of-Decay.exe
